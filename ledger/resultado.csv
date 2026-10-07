@@ -1,0 +1,183 @@
+id,submit_id,recibido_en,public_gain_mean,public_gain_std,n_archivos,submits_usados,respuesta_cruda,submission_id
+1,1,2026-10-04 00:27:37.890123+00:00,89.0175,0.6496,3,1.0,"📦 **Submission received:** 3 candidate models
+📊 **Public gain** -> mean: 89.0175, std dev: 0.6496
+🆔 **Submission ID**: `1572-1791073635598180`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 1/13",1572-1791073635598180
+2,2,2026-10-04 04:08:58.892976+00:00,91.355,1.4873,20,2.0,"📦 **Submission received:** 20 candidate models
+📊 **Public gain** -> mean: 91.3550, std dev: 1.4873
+🆔 **Submission ID**: `1572-1791086786983156`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 2/13",1572-1791086786983156
+3,3,2026-10-04 04:08:58.896018+00:00,92.675,0,1,3.0,":package: Submission received: 1 candidate model
+:bar_chart: Public gain -> mean: 92.6750, std dev: 0.0000
+:id: Submission ID: 1572-1791086793461297
+:info: This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+:calendar: Submissions today: 3/13",1572-1791086793461297
+4,4,2026-10-04 21:53:16.962728+00:00,87.9147,1.7,10,4.0,"📦 **Submission received:** 10 candidate models
+📊 **Public gain** -> mean: 87.9147, std dev: 1.7000
+🆔 **Submission ID**: `1572-1791150692744557`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 4/13",
+5,5,2026-10-04 21:53:16.970082+00:00,92.4742,1.9748,10,5.0,"📦 **Submission received:** 10 candidate models
+📊 **Public gain** -> mean: 92.4742, std dev: 1.9748
+🆔 **Submission ID**: `1572-1791150697925701`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 5/13",
+6,6,2026-10-04 21:53:16.977079+00:00,90.9755,2.7811,10,6.0,"📦 **Submission received:** 10 candidate models
+📊 **Public gain** -> mean: 90.9755, std dev: 2.7811
+🆔 **Submission ID**: `1572-1791150707801424`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 6/13",
+7,7,2026-10-04 21:53:16.984566+00:00,89.3777,1.2243,10,7.0,"📦 **Submission received:** 10 candidate models
+📊 **Public gain** -> mean: 89.3777, std dev: 1.2243
+🆔 **Submission ID**: `1572-1791150713037106`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 7/13",
+8,8,2026-10-04 21:53:16.987495+00:00,92.125,0,1,8.0,"📦 **Submission received:** 1 candidate model
+📊 **Public gain** -> mean: 92.1250, std dev: 0.0000
+🆔 **Submission ID**: `1572-1791150768939325`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 8/13",
+9,11,2026-10-05 23:46:28.505232+00:00,83.71,0,1,,[reconciliado desde el bot] submission_id 1572-1791211902451435,
+10,12,2026-10-05 23:46:28.510385+00:00,86.95,0,1,,[reconciliado desde el bot] submission_id 1572-1791211899709817,
+11,13,2026-10-05 23:46:28.521142+00:00,88.61,0,1,,[reconciliado desde el bot] submission_id 1572-1791211892854246,
+12,14,2026-10-05 23:46:28.526182+00:00,88.77,0,1,,[reconciliado desde el bot] submission_id 1572-1791211890159680,
+13,15,2026-10-05 23:46:28.530636+00:00,89.9,0,1,,[reconciliado desde el bot] submission_id 1572-1791211887486776,
+14,16,2026-10-05 23:46:28.534757+00:00,95.78,0,1,,[reconciliado desde el bot] submission_id 1572-1791164533146820,
+15,17,2026-10-05 23:46:28.546845+00:00,92.62,0,1,,[reconciliado desde el bot] submission_id 1572-1791164530673743,
+16,18,2026-10-05 23:46:28.553378+00:00,94.57,0,1,,[reconciliado desde el bot] submission_id 1572-1791164528144834,
+17,19,2026-10-05 23:46:28.556933+00:00,90.53,0,1,,[reconciliado desde el bot] submission_id 1572-1791164525718453,
+18,20,2026-10-05 23:46:28.560239+00:00,87.28,0,1,,[reconciliado desde el bot] submission_id 1572-1791164414630978,
+19,21,2026-10-05 23:46:28.562911+00:00,95.7,0,1,,[reconciliado desde el bot] submission_id 1572-1791164412306747,
+20,22,2026-10-05 23:46:28.566081+00:00,-49.86,0,1,,[reconciliado desde el bot] submission_id 1572-1791164410011828,
+21,23,2026-10-05 23:46:28.568724+00:00,96.17,0,1,,[reconciliado desde el bot] submission_id 1572-1791164407609683,
+22,24,2026-10-05 23:46:28.571260+00:00,92.1,0,1,,[reconciliado desde el bot] submission_id 1572-1791151050371329,
+23,25,2026-10-05 23:46:28.573681+00:00,97.24,0,1,,[reconciliado desde el bot] submission_id 1572-1791151047897190,
+24,26,2026-10-05 23:46:28.576632+00:00,88.14,0,1,,[reconciliado desde el bot] submission_id 1572-1791150998957389,
+25,27,2026-10-05 23:46:28.578479+00:00,95.37,0,1,,[reconciliado desde el bot] submission_id 1572-1791150996283039,
+26,28,2026-10-05 23:46:28.581450+00:00,92.59,0,1,,[reconciliado desde el bot] submission_id 1572-1791150993581933,
+27,9,2026-10-06 00:02:16.881820+00:00,87.615,0,1,1.0,"📦 **Submission received:** 1 candidate model
+📊 **Public gain** -> mean: 87.6150, std dev: 0.0000
+🆔 **Submission ID**: `1572-1791244906689239`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 1/13",
+28,32,2026-10-06 04:46:35.008020+00:00,91.8253,1.5983,20,,"📦 **Submission received:** 20 candidate models
+📊 **Public gain** -> mean: 91.8253, std dev: 1.5983
+🆔 **Submission ID**: `1572-1791261909141316`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 2/13",
+29,33,2026-10-06 04:46:35.011880+00:00,88.198,2.112,20,,"📦 **Submission received:** 20 candidate models
+📊 **Public gain** -> mean: 88.1980, std dev: 2.1120
+🆔 **Submission ID**: `1572-1791261921755909`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 3/13",
+30,34,2026-10-06 04:46:35.013469+00:00,89.3159,2.4567,20,,"📦 **Submission received:** 20 candidate models
+📊 **Public gain** -> mean: 89.3159, std dev: 2.4567
+🆔 **Submission ID**: `1572-1791261933973793`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 4/13",
+31,35,2026-10-06 04:46:35.014747+00:00,88.7535,2.0565,20,,"📦 **Submission received:** 20 candidate models
+📊 **Public gain** -> mean: 88.7535, std dev: 2.0565
+🆔 **Submission ID**: `1572-1791261946258088`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 5/13",
+32,40,2026-10-06 05:01:41.697041+00:00,91.1061,1.7148,20,10.0,"[20 archivos, corte 9.000] mean 91.1061 std 1.7148",
+33,36,2026-10-06 05:01:41.701756+00:00,90.2275,2.2529,20,,[20 archivos] mean 90.2275 std 2.2529,
+34,37,2026-10-06 05:01:41.704133+00:00,94.2232,2.0755,20,,[20 archivos] mean 94.2232 std 2.0755,
+35,38,2026-10-06 05:01:41.705553+00:00,87.153,1.7933,20,,[20 archivos] mean 87.153 std 1.7933,
+36,39,2026-10-06 05:01:41.706930+00:00,83.1834,1.8796,20,,[20 archivos] mean 83.1834 std 1.8796,
+37,43,2026-10-06 17:04:37.549277+00:00,91.2725,0,1,13.0,"[ensamble, corte 10.500] mean 91.2725",
+38,44,2026-10-07 23:44:45.154246+00:00,100.2485,1.3326,5,5.0,"📦 **Submission received:** 5 candidate models
+📊 **Public gain** -> mean: 100.2485, std dev: 1.3326
+🆔 **Submission ID**: `1572-1791416685188176`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 5/13",
+39,45,2026-10-07 23:44:49.003731+00:00,100.4135,1.6478,5,6.0,"📦 **Submission received:** 5 candidate models
+📊 **Public gain** -> mean: 100.4135, std dev: 1.6478
+🆔 **Submission ID**: `1572-1791416689026854`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 6/13",
+40,46,2026-10-07 23:44:53.043108+00:00,102.1185,1.4258,5,7.0,"📦 **Submission received:** 5 candidate models
+📊 **Public gain** -> mean: 102.1185, std dev: 1.4258
+🆔 **Submission ID**: `1572-1791416693091737`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 7/13",
+41,47,2026-10-07 23:46:09.125795+00:00,98.56,2.2251,5,8.0,"📦 **Submission received:** 5 candidate models
+📊 **Public gain** -> mean: 98.5600, std dev: 2.2251
+🆔 **Submission ID**: `1572-1791416769193700`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 8/13",
+42,48,2026-10-07 23:46:13.139595+00:00,104.159,2.2192,5,9.0,"📦 **Submission received:** 5 candidate models
+📊 **Public gain** -> mean: 104.1590, std dev: 2.2192
+🆔 **Submission ID**: `1572-1791416773198187`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 9/13",
+43,49,2026-10-07 23:46:57.680508+00:00,102.729,1.5185,5,10.0,"📦 **Submission received:** 5 candidate models
+📊 **Public gain** -> mean: 102.7290, std dev: 1.5185
+🆔 **Submission ID**: `1572-1791416817733454`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 10/13",
+44,50,2026-10-07 23:51:06.998873+00:00,90.9315,1.9516,20,2.0,"(reconciliado) Public gain mean 90.9315 std 1.9516, 20 candidate models, submissions today 2/13, response msg 195578",
+45,51,2026-10-07 23:51:07.037825+00:00,93.4917,2.3997,20,3.0,"(reconciliado) Public gain mean 93.4917 std 2.3997, 20 candidate models, submissions today 3/13, response msg 195580",
+46,52,2026-10-07 23:51:07.084554+00:00,92.3876,1.7105,20,4.0,"(reconciliado) Public gain mean 92.3876 std 1.7105, 20 candidate models, submissions today 4/13, response msg 195582",
+47,53,2026-10-07 23:51:07.135425+00:00,93.2415,1.1907,20,1.0,"(reconciliado) Public gain mean 93.2415 std 1.1907, 20 candidate models, submissions today 1/13, response msg 195497",
+48,41,2026-10-07 23:51:07.136756+00:00,93.2415,1.8353,20,11.0,"(reconciliado) Public gain mean 93.2415 std 1.8353, 20 candidate models, submissions today 11/13, response msg 193832",
+49,42,2026-10-07 23:51:07.139811+00:00,97.24,0,1,12.0,"(reconciliado) Public gain mean 97.24 std 0.0, 1 candidate models, submissions today 12/13, response msg 193834",
+50,54,2026-10-07 23:53:17.851931+00:00,102.025,2.7668,5,11.0,"📦 **Submission received:** 5 candidate models
+📊 **Public gain** -> mean: 102.0250, std dev: 2.7668
+🆔 **Submission ID**: `1572-1791417197947047`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 11/13",
+51,55,2026-10-07 23:53:22.376184+00:00,103.158,1.4524,5,12.0,"📦 **Submission received:** 5 candidate models
+📊 **Public gain** -> mean: 103.1580, std dev: 1.4524
+🆔 **Submission ID**: `1572-1791417202443427`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 12/13",
+52,56,2026-10-07 23:53:26.522584+00:00,103.7795,1.6521,5,13.0,"📦 **Submission received:** 5 candidate models
+📊 **Public gain** -> mean: 103.7795, std dev: 1.6521
+🆔 **Submission ID**: `1572-1791417206623728`
+
+ℹ️ This is now your final submission -- your LAST pre-deadline submit always is, with no separate step needed.
+
+📅 Submissions today: 13/13",

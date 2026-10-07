@@ -1,0 +1,12 @@
+# datos y modelos: pesados, se regeneran (data es un symlink a dmeyf2026/monday/data)
+data
+experimentos/**/*.txt
+experimentos/**/*.parquet
+experimentos/**/*.joblib
+experimentos/**/*.log
+*.pyc
+__pycache__/
+.DS_Store
+.env.local
+# lo que SI se versiona dentro de experimentos: envios/*.csv, *.json, *.md
+.env
