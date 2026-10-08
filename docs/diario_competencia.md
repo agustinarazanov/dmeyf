@@ -1582,3 +1582,19 @@ El +7 de 5 semillas se sostiene con 20: **+6,8 M pareado** (≈6 clientes públi
 partición entre modelos). 14.000 contra 10.000 del mismo ranking: +3,0 M, dentro del ±4 de cortes
 anidados; lo que sostiene la banda alta es la forma de la curva de 9 puntos, no este par. Sigue sin
 atribuirse entre dataset y receta (B0 del backlog, primer submit del 8-oct).
+
+### 23:10 — el corte calculado (c203) contradice al público, y hay un motivo
+
+| instrumento | qué mide | K minimax | K mínimo esperado |
+| --- | --- | ---: | ---: |
+| fold C (`[03,04,05]` → 07, **BAJA+1**, horizonte 1), captura × prevalencias 870–1.139 | tarea a un mes | **9.500** | **10.500** |
+| público (agosto, **BAJA+2**, horizonte 2), 9 cortes | la tarea real | banda **13.500–14.500** | — |
+
+Captura del fold C: 70,5% a 10.000, 78,4% a 14.000: la tasa marginal cae del 2,5% antes de 11.000.
+En público la tasa marginal 12.500→14.000 seguía en ~2,9%. La diferencia es consistente con el
+horizonte: a un mes la curva es más concentrada (tarea más fácil), a dos meses es más chata y la cola
+sigue pagando. **El fold C está sesgado hacia K chico por construcción.** Se agregó `c216` (fold B,
+horizonte 2, único fold que lo permite) a la cola de la noche para ver la forma de la cola a dos meses.
+
+Prevalencia estimada con modelo BAJA+2 puro: fold B 966 contra 1.098 reales (subestima 12% a distancia
+2); agosto **957 → corregido ≈ 1.090**. Dentro del rango observado; no explica el óptimo a la derecha.
