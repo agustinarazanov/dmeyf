@@ -45,7 +45,7 @@ probabilidades; la suma de `p` sobre 202108 estima los positivos de agosto. Vali
 sobre 202106 (fold B) contra los 1.098 reales. Si calibra razonablemente, es un segundo instrumento
 para el corte, independiente del público. Costo: casi cero con un modelo K1 de B1.
 
-### B5. Features de transición y de recencia — EN DATASET (`c230`, 800 col: 36 transiciones, 4 recencias, reparaciones de Ramírez); se entrena después de `c221`
+### B5. Features de transición y de recencia — MEDIDO 8-oct 16:12 (`c231`): 102,58 a 14k, −1,6, neutro. No se adopta (junto con las reparaciones A5)
 Indicadores "pasó a cero este mes" y "pasó a negativo" para las variables de monto, y "meses desde
 el último sueldo / desde la última transacción / desde que entró en rojo". Clara Rodríguez midió en
 Zulip transiciones a cero en `mcaja_ahorro` (32% → 41% en la cohorte BAJA+2) y `mpasivos_margen`.

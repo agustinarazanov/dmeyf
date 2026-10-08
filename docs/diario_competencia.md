@@ -1703,3 +1703,9 @@ rescata nada. **La entrega vigente es el ensamble de 20 semillas de la receta so
 104,17**, el mejor público de la competencia hasta ahora.
 
 Nota operativa: el bot ahora reporta cupo **x/17** (antes 13): quedan 7 submits hoy.
+
+### 8-oct 16:12 — reparaciones + transiciones + recencia (`c231`): 102,58 a 14.000, −1,6 contra `c201`
+
+Dentro del ruido (±3), con más dispersión entre semillas (sd 2,55 contra 1,3–2,2 de las demás). Las
+reparaciones de Ramírez y las 40 features binarias no agregan sobre lags12; tampoco restan de forma
+medible. **No se adopta** (criterio: ante empate, la entrega sin código nuevo). Quedan 6 submits hoy.
