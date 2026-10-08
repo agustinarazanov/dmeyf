@@ -1867,3 +1867,20 @@ rondas con otro nombre de caché, una hora de máquina y el 17º submit del día
 dice el resultado es que el pipeline es determinista bit a bit entre corridas. `c210` ahora tiene
 `--rondas`; las 3.000 de verdad van a la cola de la noche con ese flag, y se deja de generar scripts con
 `sed`. La curva de rondas sigue teniendo dos puntos: 1.000 → 104,16 y 2.000 → 105,51.
+
+### 8-oct 20:40 — code review de `monday-3d`: dos bugs reales en las reparaciones de calendario, y el sort
+
+- **`c252` dividía por 1,5 a TODOS los asalariados de junio**, también al ~30% con una sola acreditación:
+  en agosto les inventaba un `delta2` de +50%, el artefacto con el signo invertido. Ahora solo donde hay
+  evidencia de SAC (2+ acreditaciones o salto > 30% contra mayo). Dataset regenerado (mediana de
+  `delta2/mpayroll` en agosto: +8,7%).
+- **`c254` dejaba `cliente_vip` en NULL** a las ~1.100 altas de junio (`lag` sin `coalesce`). Corregido y
+  regenerado; 0 nulos. Los dos antes de que la cola los entrene (`c253`, `c255` siguen en espera).
+- **`top_k` y `ganancia_acumulada` usaban `argsort` inestable**: clientes con score idéntico entraban según
+  el quicksort. Ahora `kind="stable"` (empates por orden de id) en `competencia.py` y `reproducir.py`.
+  Verificado que la selección vigente no cambia (no hay empates en el borde del 14.000).
+- Diferido con motivo: la huella de contenido del dataset en `clave()` invalidaría todos los cachés a dos
+  días del cierre (se anota para después); `lags12` en disco es la versión v1 y `reproducir.py` la
+  reproduce a propósito; la exclusión de `cliente_antiguedad`/`*_status` de los lags cambiaría el
+  dataset de comparación. Aceptado: barrido chico de hessiano (×0,5, ×2) y hojas (127) a 2.000 rondas,
+  en la cola de la noche (`c247`–`c249`).

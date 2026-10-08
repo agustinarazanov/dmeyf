@@ -46,6 +46,8 @@ def main() -> None:
     ap.add_argument("--semillas", type=int, default=5)
     ap.add_argument("--cortes", type=int, nargs="+", default=[10_000, 14_000])
     ap.add_argument("--rondas", type=int, default=None, help="num_boost_round; por defecto 1.000 (receta) o 250 (z701)")
+    ap.add_argument("--hojas", type=int, default=None, help="num_leaves (receta: 83)")
+    ap.add_argument("--hessian", type=float, default=None, help="factor sobre min_sum_hessian_in_leaf de la receta (1,0 = 12,79 x filas / 326.184)")
     args = ap.parse_args()
     t0 = time.time()
     carpeta = c.EXPERIMENTOS / args.nombre
@@ -65,9 +67,13 @@ def main() -> None:
         P, nbr = PARAMS_Z701, 250
     if args.rondas:
         nbr = args.rondas
+    if args.hojas:
+        P = {**P, "num_leaves": args.hojas}
+    if args.hessian:
+        P = {**P, "min_sum_hessian_in_leaf": P["min_sum_hessian_in_leaf"] * args.hessian}
     print(f"  {args.nombre}: {args.dataset} | {len(pred)} predictoras | {args.params} | "
           f"{args.target} {args.peso_baja1 if args.target == 'pesos' else ''} | meses {args.meses} | "
-          f"{len(X):,} filas, {int(y.sum()):,} positivos | {nbr} rondas [{time.time()-t0:.0f}s]", flush=True)
+          f"{len(X):,} filas, {int(y.sum()):,} positivos | {nbr} rondas, {P['num_leaves']} hojas, hessian {P['min_sum_hessian_in_leaf']:.2f} [{time.time()-t0:.0f}s]", flush=True)
 
     scores = {}
     for i, s in enumerate(semillas_c107(args.semillas), 1):

@@ -29,9 +29,13 @@ def main():
     con.execute(f"create or replace view base as select * exclude ({', '.join(COLS + derivadas)}) from read_parquet('{ORIGEN}')")
     con.execute(f"create or replace view crudo as select {fe.ID}, {fe.MES}, {', '.join(COLS)} from read_parquet('{c.DATOS / 'competencia_01.parquet'}')")
     # montos: / 1,5 (medio aguinaldo). Acreditaciones: en junio el 70% tiene 2+ (sueldo + SAC) contra 40% normal -> una menos
+    # Solo donde hay evidencia de SAC: 2+ acreditaciones en junio, o salto > 30% contra mayo. Dividir a TODOS
+    # por 1,5 (version anterior) inventaba en agosto un delta2 de +50% a los asalariados sin aguinaldo
+    # visible: el artefacto con el signo invertido (hallazgo del code review del 8-oct).
+    sac = f"({fe.MES} = 202106 and (cpayroll_trx >= 2 or mpayroll > 1.3 * lag(mpayroll) over (partition by {fe.ID} order by {fe.MES})))"
     corr = ", ".join(
-        f"case when {fe.MES} = 202106 and {x} >= 2 then {x} - 1 else {x} end as {x}" if x.startswith("c") else
-        f"case when {fe.MES} = 202106 then {x} / 1.5 else {x} end as {x}" for x in COLS)
+        f"case when {sac} and {x} >= 2 then {x} - 1 else {x} end as {x}" if x.startswith("c") else
+        f"case when {sac} then {x} / 1.5 else {x} end as {x}" for x in COLS)
     lags = []
     for x in COLS:
         lags += [f"lag({x}, 1) over historia :: FLOAT as {x}__lag1", f"({x} - lag({x}, 1) over historia) :: FLOAT as {x}__delta1",

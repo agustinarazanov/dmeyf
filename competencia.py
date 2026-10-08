@@ -96,7 +96,7 @@ def aporte(es_baja2: np.ndarray) -> np.ndarray:
 
 
 def ganancia_acumulada(scores: np.ndarray, es_baja2: np.ndarray) -> np.ndarray:
-    orden = np.argsort(scores)[::-1]
+    orden = np.argsort(-np.asarray(scores), kind="stable")   # empates: orden de entrada, no el del quicksort
     return np.cumsum(aporte(es_baja2)[orden])
 
 
@@ -216,7 +216,8 @@ def escribir_envios(ids, ruta: Path, validos: set[int] | None = None,
 
 
 def top_k(scores: np.ndarray, ids: np.ndarray, k: int) -> np.ndarray:
-    return np.asarray(ids)[np.argsort(scores)[::-1][:k]]
+    # estable: clientes con score identico (perfil todo-cero) entran en orden de id, no segun el quicksort
+    return np.asarray(ids)[np.argsort(-np.asarray(scores), kind="stable")[:k]]
 
 
 def ensamble_por_rank(scores_por_semilla: dict[int, np.ndarray]) -> np.ndarray:

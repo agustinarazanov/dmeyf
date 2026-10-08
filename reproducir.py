@@ -145,7 +145,7 @@ def main() -> None:
         print(f"    semilla {s} ({i}/{args.semillas}) [{time.time()-t0:.0f}s]", flush=True)
     ens = np.mean(rangos, axis=0)            # ensamble por RANGO, no por score
 
-    elegidos = np.sort(ids[np.argsort(ens)[::-1][:CORTE]]).astype("int64")
+    elegidos = np.sort(ids[np.argsort(-ens, kind="stable")[:CORTE]]).astype("int64")   # empates: por orden de id
     args.salida.parent.mkdir(parents=True, exist_ok=True)
     np.savetxt(args.salida, elegidos, fmt="%d")
     texto = args.salida.read_text()

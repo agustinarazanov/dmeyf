@@ -40,7 +40,7 @@ def main():
     derivadas = [f"{x}__{s}" for x in COLS for s in ("lag1", "delta1", "lag2", "delta2")]
     con.execute(f"create or replace view base as select * exclude ({', '.join(COLS + derivadas)}) from read_parquet('{ORIGEN}')")
     con.execute(f"create or replace view crudo as select {fe.ID}, {fe.MES}, cliente_vip, Visa_delinquency, Visa_Finiciomora from read_parquet('{c.DATOS / 'competencia_01.parquet'}')")
-    corr = (f"case when {fe.MES} = 202106 then lag(cliente_vip) over (partition by {fe.ID} order by {fe.MES}) else cliente_vip end as cliente_vip, "
+    corr = (f"case when {fe.MES} = 202106 then coalesce(lag(cliente_vip) over (partition by {fe.ID} order by {fe.MES}), cliente_vip) else cliente_vip end as cliente_vip, "
             f"case when {fe.MES} in (202105, 202108) and Visa_Finiciomora = 0 then 0 else Visa_delinquency end as Visa_delinquency")
     lags = []
     for x in COLS:
