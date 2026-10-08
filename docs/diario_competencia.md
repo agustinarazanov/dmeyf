@@ -1787,3 +1787,23 @@ el 0,25 es el máximo y no es un artefacto del corte 11.000 como se temía. La h
 BAJA+1 mejora la cabeza" era correcta en el fold B para 0 contra 0,25 pero no extrapola: a peso pleno
 el modelo aprende a rankear BAJA+1, que a 14.000 cuestan 27.500 cada uno y desplazan BAJA+2.
 El bot aceptó los submits 14º y 15º: **el cupo de 17 es real**. Quedan 2 hoy.
+
+### 8-oct 19:05 — ¿se puede distinguir BAJA+1 de BAJA+2 con FE? Medido: no alcanza, y no alcanzaría ni con señal perfecta de 3:1
+
+Entre fugados, entrenando 03–05 y validando junio (1.972 fugados, 44% BAJA+1):
+
+| features | AUC BAJA+1 vs BAJA+2 |
+| --- | ---: |
+| 150 crudas | 0,619 |
+| 750 con lags | 0,543 (sobreajusta: 6.095 filas) |
+
+Señales univariadas en junio (tasa en BAJA+1 / en BAJA+2): tarjeta en cierre 6,8% / 2,8% (×2,4); perdió el
+descubierto este mes 4,2% / 1,5% (×2,7); perdió una familia de productos 13,5% / 6,6% (×2,0). Existen,
+son el "proceso de cierre" de la última foto, pero cubren 7–14% de los BAJA+1 con ratio ≤ 2,7.
+
+**La aritmética cierra la puerta**: bajar del top a un BAJA+1 ahorra 27.500; bajar por error a un
+BAJA+2 cuesta 1.072.500, 39 veces más. Una regla con ratio 2,7:1 que saque del top 14.000 al 6,8% de los
+~650 BAJA+1 (≈45) saca también al 2,8% de los ~720 BAJA+2 (≈20): +1,2 M − 21,5 M = **−20 M**. Para que
+pague hace falta una señal con precisión > 39:1, y ninguna variable ni la tipología del video 1
+(que describe patrones de fuga, no horizontes) está cerca. Cerrado: el BAJA+1 en el top es un costo
+estructural, y la única palanca sobre él es el peso en el entrenamiento (0,25).
