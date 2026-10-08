@@ -54,6 +54,8 @@ def main() -> None:
     ap.add_argument("--notas", default=None)
     ap.add_argument("--final", action="store_true")
     ap.add_argument("--enviar", action="store_true")
+    ap.add_argument("--reenviar", action="store_true",
+                    help="permite reenviar un submit que ya figura como enviado/respondido")
     ap.add_argument("--esperar", type=int, default=240)
     args = ap.parse_args()
 
@@ -84,6 +86,9 @@ def main() -> None:
             print(f"registrado submit {args.submit} (experimento {args.experimento}, id {exp_id})")
         else:
             print(f"el submit {args.submit} ya existe en estado {existe['estado']!r}")
+            if args.enviar and existe["estado"] in ("enviado", "respondido") and not args.reenviar:
+                sys.exit("  ya fue enviado: reenviarlo gasta cupo y choca con resultado.unique; "
+                         "usar --reenviar si es a proposito")
         con.commit()
 
     print(f"  {len(archivos)} archivos, envios por archivo: "
@@ -106,7 +111,10 @@ def main() -> None:
         print("  el bot no respondio a tiempo; correr `competencia.py ultimas` y registrar a mano")
         return
     z.guardar(mensajes)
-    for m in mensajes:
+    # resultado tiene unique(submit_id): se registra UNA respuesta, la primera con numeros
+    # (o la primera a secas si ninguna los trae, que es el caso de rechazo).
+    con_numeros = [m for m in mensajes if z.parsear(m)["public_gain_mean"] is not None]
+    for m in (con_numeros or mensajes)[:1]:
         p = z.parsear(m)
         with r.conectar() as con:
             r.alta_resultado(con, args.submit, p["respuesta_cruda"],

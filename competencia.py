@@ -131,6 +131,7 @@ def simular_publico_privado(scores, es_baja2, envios: int, publico: float = 0.25
     Da la resolucion del instrumento: cuanto se mueve la lectura publica por el
     solo sorteo de la particion, sin que el modelo cambie en nada.
     """
+    scores, es_baja2 = np.asarray(scores), np.asarray(es_baja2)   # una Series con indice de etiquetas se indexa mal
     n = len(scores)
     elegidos = np.argsort(scores)[::-1][:envios]
     v = np.zeros(n)

@@ -28,6 +28,10 @@ DESTINO = c.DATOS / "competencia_01_lags12.parquet"
 
 
 def main() -> None:
+    import argparse
+    ap = argparse.ArgumentParser(); ap.add_argument("--forzar", action="store_true"); args = ap.parse_args()
+    if DESTINO.exists() and not args.forzar:
+        raise SystemExit(f"{DESTINO.name} ya existe; regenerarlo invalida los modelos cacheados que lo usaron. --forzar para pisarlo")
     t0 = time.time()
     con = fe.conectar()
     con.execute(f"create or replace view base as select * from read_parquet('{ORIGEN}')")
@@ -42,12 +46,14 @@ def main() -> None:
         nuevas.append(f"lag({x}, 2) over historia :: FLOAT as {x}__lag2")
         nuevas.append(f"({x} - lag({x}, 2) over historia) :: FLOAT as {x}__delta2")
 
+    # La anulacion va en una CTE para que los lags/deltas se calculen sobre la columna ya
+    # corregida. OJO: el archivo generado el 2026-10-07 (el que entreno c201) tenia los lags
+    # sobre los ceros crudos de 202105; esta version los corrige. Regenerar cambia el dataset.
     sql = (
-        "select * exclude (ccajas_depositos)"
+        "with limpia as (select * exclude (ccajas_depositos)"
         f"\n  , case when {fe.MES} = 202105 then null else ccajas_depositos end as ccajas_depositos"
-        + fe._fragmento(nuevas)
-        + "\nfrom base"
-        + fe.clausula_ventana("historia")
+        "\n  from base)"
+        "\nselect *" + fe._fragmento(nuevas) + "\nfrom limpia" + fe.clausula_ventana("historia")
     )
     con.execute(f"copy ({sql}) to '{DESTINO}' (format PARQUET, COMPRESSION ZSTD)")
     n, k = con.execute(f"select count(*), (select count(*) from (describe select * from read_parquet('{DESTINO}'))) from read_parquet('{DESTINO}')").fetchone()

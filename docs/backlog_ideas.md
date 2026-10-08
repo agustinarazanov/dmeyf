@@ -95,3 +95,11 @@ ganar). Hay que saltear `MAX_ENVIOS` y `MAX_FILAS` a propósito; lo corre la usu
 - Demoter de horizonte 1 ingenuo, dos etapas, modelo por mes, `scale_pos_weight`: firma mayo/junio o nada.
 - Más rondas con árboles complejos (45 hojas, `min_data_in_leaf` 174): sobreajusta.
 - Lo que el profesor lista como inútil: PCA, imputar, outliers, AutoML, desbalanceo, features de clustering.
+
+## D. Deuda técnica abierta (del code review del 7-oct noche, sesión competencia-1-05)
+- `reproducir.py` reproduce la entrega vieja (base 150 col, 10.000) y no fija `deterministic`/`force_col_wise`/
+  `num_threads` como `c201`. Se reescribe entero cuando se fije la entrega final.
+- `data/competencia_01_lags12.parquet` del 7-oct tiene los lags de `ccajas_depositos` sobre los ceros crudos de
+  202105 (una columna de 750). `c200` ya está corregido y se niega a pisar el archivo sin `--forzar`: el
+  desacople (B0) se corre sobre el archivo viejo para que el dataset sea idéntico al de `c201`; recién después
+  se regenera y se reentrena lo que quede vigente.

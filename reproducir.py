@@ -27,6 +27,7 @@ import pandas as pd
 RAIZ = Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
 import fe_panel as fe  # noqa: E402
+from competencia import verificar_seleccion  # noqa: E402
 
 CRUDO = RAIZ / "data" / "competencia_01_crudo.csv"
 PANEL = RAIZ / "data" / "competencia_01.parquet"
@@ -119,22 +120,11 @@ def main() -> None:
     assert len(np.loadtxt(args.salida, dtype="int64")) == CORTE
     assert set(elegidos) <= set(ids.tolist())
 
-    # Pertenecer al mes es MEMBRESIA, no CORRESPONDENCIA: si los scores se indexan contra
-    # los ids de otra tabla (DuckDB reordena filas al escribir un parquet) salen ids
-    # perfectamente validos que el modelo nunca eligio. Eso ya costo un submit con
-    # ganancia -49,86. Este chequeo exige que los elegidos esten ENRIQUECIDOS en
-    # marcadores de riesgo; una seleccion desalineada no lo esta.
-    fut = d[d[fe.MES] == MES_PREDECIR]
-    for nombre, cond in {
-        "ctrx_quarter == 0": fut["ctrx_quarter"].fillna(0) == 0,
-        "mcuentas_saldo < 0": fut["mcuentas_saldo"].fillna(0) < 0,
-    }.items():
-        marcado = fut[fe.ID].isin(set(elegidos.tolist()))
-        p_sel, p_resto = cond[marcado].mean(), cond[~marcado].mean()
-        lift = p_sel / p_resto if p_resto else float("inf")
-        assert np.isfinite(lift), f"lift no finito en «{nombre}»: los ids no son de {MES_PREDECIR}"
+    # Pertenecer al mes es MEMBRESIA, no CORRESPONDENCIA: scores indexados contra los ids de
+    # otra tabla dan ids validos que el modelo nunca eligio (ya costo un submit de -49,86).
+    # verificar_seleccion exige enriquecimiento en marcadores de riesgo y falla cerrado.
+    for nombre, (p_sel, p_resto, lift) in verificar_seleccion(elegidos, d).items():
         print(f"  {nombre:22s} {p_sel:6.1%} vs {p_resto:6.1%}   x{lift:.2f}")
-    assert lift > 1.5, "la seleccion no se distingue de la poblacion: scores e ids desalineados"
 
     print(f"\n  {args.salida}: {CORTE:,} envios")
     print(f"  sha256: {hashlib.sha256(args.salida.read_bytes()).hexdigest()}")

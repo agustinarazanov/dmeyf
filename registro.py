@@ -195,7 +195,10 @@ def alta_experimento(con: psycopg.Connection, nombre: str, **campos) -> int:
     columnas = ["nombre", *campos.keys()]
     valores = [nombre, *campos.values()]
     marcas = ", ".join(["%s"] * len(columnas))
-    actualiza = ", ".join(f"{c} = excluded.{c}" for c in campos) or "nombre = excluded.nombre"
+    # coalesce: un kwarg omitido (NULL) no borra lo que ya estaba. Antes cada corrida de
+    # enviar.py pisaba descripcion/corte_envios/git_sha del experimento con el ultimo valor.
+    actualiza = ", ".join(f"{c} = coalesce(excluded.{c}, experimento.{c})" for c in campos) \
+        or "nombre = excluded.nombre"
     fila = con.execute(
         f"insert into experimento ({', '.join(columnas)}) values ({marcas}) "
         f"on conflict (nombre) do update set {actualiza} returning id",

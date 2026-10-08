@@ -42,6 +42,8 @@ def entrenar(d, meses, target, s, etiqueta):
     X, y, w = c.preparar(d, meses, target, 0.25 if target == "pesos" else 0.0)
     pred = c.columnas_predictoras(d)
     P = params_receta(len(X))
+    peso = 0.25 if target == "pesos" else 0.0
+    etiqueta = f"{etiqueta}_{c.clave(P, meses, target, peso, DATASET, NBR, s)}"
     return c.entrenar_o_cargar(P, X[pred], y, w, NBR, s, CARPETA, etiqueta), pred
 
 
@@ -88,7 +90,7 @@ def main() -> None:
     print(captura.to_string(index=False, float_format=lambda x: f"{x:.3f}"))
 
     # ---- 3. ganancia esperada por K bajo cada prevalencia, y arrepentimiento ------------
-    escenarios = PREVALENCIAS_OBSERVADAS + [round(prev["agosto"]["suma_p_media"])]
+    escenarios = sorted(set(PREVALENCIAS_OBSERVADAS + [round(prev["agosto"]["suma_p_media"])]))
     filas = []
     for n_pos in escenarios:
         g = {k: cap * n_pos * c.GANANCIA_ACIERTO - (k - cap * n_pos) * c.COSTO_ESTIMULO

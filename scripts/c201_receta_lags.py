@@ -87,9 +87,12 @@ def main() -> None:
     for i, s in enumerate(semillas_c107(args.semillas), 1):
         ruta = CARPETA / f"scores_202108_s{s}.parquet"
         if ruta.exists():
-            scores[s] = pd.read_parquet(ruta)["score"].to_numpy()
+            t = pd.read_parquet(ruta)
+            assert (t[c.fe.ID].to_numpy() == ids).all(), f"{ruta.name}: los ids cacheados no son los del dataset actual"
+            scores[s] = t["score"].to_numpy()
         else:
-            m = c.entrenar_o_cargar(P, X, y, w, NBR, s, CARPETA, f"receta_{s}")
+            etiqueta = f"receta_{s}_{c.clave(P, MESES, TARGET, PESO_BAJA1, DATASET, NBR, s)}"
+            m = c.entrenar_o_cargar(P, X, y, w, NBR, s, CARPETA, etiqueta)
             scores[s] = m.predict(Xfut)
             pd.DataFrame({c.fe.ID: ids, "score": scores[s]}).to_parquet(ruta)
         print(f"  semilla {s} ({i}/{args.semillas}) [{time.time()-t0:.0f}s]", flush=True)
