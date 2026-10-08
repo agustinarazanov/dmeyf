@@ -1742,3 +1742,30 @@ solapa 96,2% con la de `c201`, así que el público solo podía ver ±2 M, y dio
 adopta.** Lectura: el mes extra a distancia 1 no mueve un modelo que ya está saturado de datos (la
 grilla de meses de la semana pasada decía que 1 ≈ 2 ≈ 3 meses), y la poda no alcanza a limpiar lo que
 `c168` ensuciaba. Queda cerrado A6; B10 (pseudo-etiquetado completo) no tiene sentido después de esto.
+
+### 8-oct 17:05 — por qué el target BAJA+2 puro perdió (−5,3 público): diagnóstico en el fold B
+
+Modelos cacheados con la receta sobre lags12, entrenados en marzo+abril, evaluados en junio (1.098 BAJA+2,
+874 BAJA+1), 3 semillas cada uno:
+
+| | AUC sobre BAJA+2 | AUC sobre BAJA+1 | gan@8k | gan@14k | captura@14k | BAJA+1 en el top 14k |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| target BAJA+2 puro (4.067 pos.) | 0,8983 | 0,9206 | 338,8 | 394,9 | 64,6% | 647 |
+| `pesos` 0,25 (8.067 pos.) | **0,9022** | **0,9272** | **363,0** | **407,0** | **65,6%** | 658 |
+
+Tres hechos:
+1. **El modelo entrenado con los BAJA+1 rankea MEJOR a los BAJA+2** (AUC 0,902 contra 0,898), aunque
+   su target "no es el que paga". Los BAJA+1 son los mismos clientes un mes más tarde: su última foto
+   es el ejemplo más claro de "se va", y sacarlos tira la mitad de la señal, no ruido.
+2. **Excluirlos no evita mandarlos**: el modelo BAJA+2 puro pone 647 BAJA+1 en el top 14.000, el
+   otro 658. La distinción "se va en uno o en dos meses" no se aprende (AUC 0,60 medido antes), así
+   que el costo de los BAJA+1 en el corte es el mismo con los dos targets.
+3. **La pérdida está en la cabeza del ranking**: −24 M a 8.000, −12 M a 14.000. Con la mitad de
+   positivos y `min_sum_hessian_in_leaf` escalado por filas, las hojas ricas en positivos quedan
+   más podadas justo donde el modelo necesita más confianza. El rank mediano de un BAJA+2 pasa de
+   8.797 a 9.159.
+
+Público −5,3 en el 25% ≈ −21 M al mes; el fold B dice −12 M. Mismo signo y orden. **Lo que sigue de
+esto**: si más señal de BAJA+1 ayuda, `peso_baja1` 0,5 y 1,0 (`baja12`) sobre el ranking nuevo son
+variantes con fundamento (en el base, 0,25 ganó a 0,5 y a 1,0 solo al corte 11.000 y con poca
+evidencia). Van a la cola detrás de las 2.000 rondas.
