@@ -1769,3 +1769,12 @@ Público −5,3 en el 25% ≈ −21 M al mes; el fold B dice −12 M. Mismo sign
 esto**: si más señal de BAJA+1 ayuda, `peso_baja1` 0,5 y 1,0 (`baja12`) sobre el ranking nuevo son
 variantes con fundamento (en el base, 0,25 ganó a 0,5 y a 1,0 solo al corte 11.000 y con poca
 evidencia). Van a la cola detrás de las 2.000 rondas.
+
+### 8-oct 17:49 — 2.000 rondas (`c241`): 105,51 a 14.000, **+1,35** contra `c201`
+
+Primera variante por encima de `c201` (104,16 con las mismas 5 semillas y partición). Dentro del ±3 de
+ruido, pero con mecanismo: el `best_iter` de la búsqueda escalaba con los meses (1.000 con dos, tope
+2.500 con tres) y la receta fija 1.000 para cuatro. Solapa 92,7% con `c201`. **Candidata, no adoptada**:
+hace falta (a) 3.000 rondas para ver si sigue subiendo o ya baja, y (b) las 20 semillas con ensamble en
+un archivo, comparable con los 104,17 de la entrega vigente. Las dos van a la cola de esta noche.
+El submit fue el 13º del día y el bot lo aceptó con `13/17`; el 14º prueba el cupo nuevo.
