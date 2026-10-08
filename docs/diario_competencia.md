@@ -1850,3 +1850,11 @@ por calendario y no por conducta:
 
 Datasets generados: `aguinaldo` (`c252`, regenerado con `cpayroll_trx`) y `calendario` (`c254` = aguinaldo + vip
 + delinquency). Entrenan con 2.000 rondas en la cola (`c253`, `c255`) contra los 105,51 de `c241`.
+
+> **Corrección tras leer el diccionario (pedido de la usuaria)**: `cpayroll_trx` es "cantidad de acreditaciones
+> de haberes en el mes; una empresa puede hacerle VARIOS depósitos" → la segunda acreditación de junio (el SAC)
+> es real por definición; restarla es quitar el calendario, no arreglar un error. `cliente_vip` es una marca
+> de marketing "al momento de la foto": el pico de junio es un cambio de criterio, y reemplazarlo es un juicio.
+> `Visa_delinquency = 1` con `Visa_Finiciomora = 0` es "venció ayer y no pagó": **mora fresca por definición,
+> no inyección**; ponerla en 0 es una decisión de modelado (el patrón de calendario de 05/08 no está en el
+> train con el mismo signo), no una reparación. Los tres quedan así documentados en `c252`/`c254`.

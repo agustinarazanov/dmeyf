@@ -1,4 +1,16 @@
-"""Reparaciones de calendario juntas: aguinaldo (c252) + cliente_vip de junio + Visa_delinquency inyectada.
+"""Reparaciones de calendario juntas: aguinaldo (c252) + cliente_vip de junio + Visa_delinquency "fresca".
+
+DICCIONARIO (leido antes de tocar):
+- cliente_vip: "indica si marketing considera a esa cliente un cliente vip al momento de obtencion de la foto".
+  Es una marca de marketing, no una conducta: que se duplique solo en junio (921 contra ~430) y vuelva en
+  julio es un cambio de criterio de un mes. Reemplazar junio por mayo es un juicio, no una correccion de error.
+- Visa_delinquency: "{0,1} indica si el cliente no llego a completar el pago minimo y esta moroso".
+- Visa_Finiciomora: "dias para el inicio de la mora (el dia siguiente al vencimiento), contados a la fecha
+  de la foto". Finiciomora = 0 con delinquency = 1 es entonces "vencio ayer y todavia no pago": por
+  definicion NO es un dato roto sino mora recien iniciada, que aparece en masa en los meses cuyo cierre
+  de tarjeta cae justo antes de la foto (05 y 08). Se la pone en 0 porque en junio (train) su delta1 es
+  negativo y en agosto (scoring) positivo, un patron de calendario que el modelo no puede haber aprendido;
+  es una decision de modelado sobre un valor correcto, no una reparacion.
 
 El escaneo de las 600 columnas derivadas (8-oct 19:40) encontro, ademas del aguinaldo, dos artefactos de
 calendario que llegan a los lags de agosto:
