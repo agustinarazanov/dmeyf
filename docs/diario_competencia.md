@@ -1662,3 +1662,26 @@ eso lo mide el público con el ensamble `c221`.
 Dirección de la búsqueda (16 trials, cortada a las 10:58): hojas 170–210 (la receta: 83), `ff` 0,55–0,65,
 `bynode` 0,11–0,16, hessiano por fila 1e-6 a 8e-6 (la receta: 3,9e-5), y rondas al tope de 2.500 en el
 fold C. O sea árboles más grandes y menos regularizados que la receta, con más rondas.
+
+### 8-oct 11:35 — la búsqueda SÍ sobreajustó a sus meses: control en mayo (`c222`)
+
+Receta y top 5 de `c220`, una semilla, 1.000 rondas, entrenando marzo y validando mayo (fold A, mes que la
+búsqueda no vio):
+
+| config | AUC búsqueda (jun+jul) | AUC mayo | gan@8k mayo (M) |
+| --- | ---: | ---: | ---: |
+| **receta** | 0,92149 | **0,89501** | **270,6** |
+| trial 16 | 0,92430 | 0,89238 | 262,9 |
+| trial 14 | 0,92411 | 0,89476 | 266,2 |
+| trial 13 | 0,92393 | 0,89437 | 261,8 |
+| trial 19 | 0,92390 | 0,89297 | 264,0 |
+| trial 18 | 0,92373 | 0,89330 | 264,0 |
+
+**Cinco de cinco debajo de la receta en mayo**, en AUC y en ganancia. La mejora de 0,003 de AUC en junio y
+julio no transfiere: la objeción de la usuaria (sobreajuste de la búsqueda a los meses de validación) era
+correcta, y la del ruido de semilla no era el problema. Dos lecturas posibles, no excluyentes: (a) 20 trials
+sobre dos meses fijos con error muestral ~0,004 eligen configuraciones que les calzan; (b) la dirección
+encontrada (árboles de 170–210 hojas, hessiano 10× más bajo) necesita más filas de las que tiene el fold
+A (un mes), así que mayo la castiga más que lo que la castigaría la entrega de cuatro meses. El público
+con `c221` decide entre (a) y (b); mientras tanto **la receta sigue siendo la configuración vigente** y
+una búsqueda futura tiene que validar en un mes fuera de la búsqueda, con varias semillas, o no hacerse.
