@@ -38,7 +38,7 @@ los apuntes por notebook, en el vault de Obsidian `DMEyF/`.
 
 1. **Un submit mide una hipótesis con fundamento**, escrita antes en el ledger con su delta contra una
    referencia. Nunca al azar, nunca para "dejar vigente" el mejor puntaje: eso se hace solo cuando la
-   usuaria lo indique, cerca del cierre. El cupo diario (13, renueva 21:00 ART) se gasta entero midiendo.
+   usuaria lo indique, cerca del cierre. El cupo diario se gasta entero midiendo: **17** desde el 8-oct (el bot pasó de x/13 a x/17 sin anuncio); si rechaza el 14º, volver a 13. Renueva 21:00 ART.
 2. **Nada se envía sin pasar por `enviar.py`**, que registra primero (`estado='preparado'`) y envía
    después. Sin `--enviar` solo registra e imprime el resumen para aprobar.
 3. **Todo lo que cuesta cómputo se persiste**: modelos por semilla en `experimentos/<exp>/modelo_*.txt`,
@@ -57,6 +57,8 @@ los apuntes por notebook, en el vault de Obsidian `DMEyF/`.
 
 pyenv `facultad` (Python 3.14) para todo lo de modelos; pyenv `zulip` para `enviar.py` (tiene el
 módulo `zulip` además de `psycopg`). Después de un reboot: `open -a Docker && docker start zulip-postgres`.
+
+Las pistas del profesor, con ids de Zulip, están en `docs/pistas_profesor.md`.
 
 ## Estado
 
