@@ -32,7 +32,7 @@ nulos vuelve a codificar el mes (ya se midió que explicaba ~6 de 47 M en el FE 
 perdió para el base por la ley de distancia, pero el trade-off cambia cuando marzo aporta 1/4 de las
 filas y 0 de la historia. Costo: un entrenamiento de 5 semillas, un submit.
 
-### B3. Ensamble heterogéneo — EN CURSO (`c221`, top 5 × 4 semillas). OJO: `c222` mostró que el top 5 sobreajusta a jun/jul (5/5 debajo de la receta en mayo)
+### B3. Ensamble heterogéneo — MEDIDO 8-oct 16:11: −2,2 contra el ensamble de la receta (104,17). Refutado tal como se hizo (sus miembros salieron de una búsqueda que sobreajustó)
 Denicolay pide "10+ modelos con hiperparámetros distintos" promediados. El semillerío de 20 iguales
 cancela ruido de orden; modelos distintos (otro `num_leaves`, otro `ff`, otro dataset) cancelan sesgos.
 Salida natural del Optuna de A2: promediar los rangos del top-5 de trials. Abregu: 40 semillas no

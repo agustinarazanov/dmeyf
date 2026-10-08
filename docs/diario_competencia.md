@@ -1685,3 +1685,21 @@ encontrada (árboles de 170–210 hojas, hessiano 10× más bajo) necesita más 
 A (un mes), así que mayo la castiga más que lo que la castigaría la entrega de cuatro meses. El público
 con `c221` decide entre (a) y (b); mientras tanto **la receta sigue siendo la configuración vigente** y
 una búsqueda futura tiene que validar en un mes fuera de la búsqueda, con varias semillas, o no hacerse.
+
+### 8-oct 16:11 — el ensamble heterogéneo pierde; el ensamble de la receta es la mejor entrega (104,17)
+
+Corte 14.000, misma partición:
+
+| submit | qué es | público | vs referencia |
+| --- | --- | ---: | ---: |
+| `c201_lags_ens20_14000` | **un archivo**: ensamble por rank de las 20 semillas de la receta | **104,17** | +1,2 sobre los 20 archivos sueltos (103,00): Jensen, como se predijo |
+| `c221_trials_14000` | 5 archivos, cada uno un trial de Optuna con 4 semillas ensambladas | 100,91 | **−3,3** |
+| `c221_hetero_14000` | un archivo, 20 modelos heterogéneos (5 trials × 4 semillas) | 101,97 | **−2,2** |
+
+**Tres instrumentos coinciden**: el control en mayo (`c222`), el trial medio en agosto y el ensamble
+heterogéneo en agosto. La búsqueda de Optuna por AUC en junio+julio eligió configuraciones peores que la
+receta para el mes real. Queda refutado B3 tal como se hizo; la heterogeneidad con miembros peores no
+rescata nada. **La entrega vigente es el ensamble de 20 semillas de la receta sobre lags12, corte 14.000:
+104,17**, el mejor público de la competencia hasta ahora.
+
+Nota operativa: el bot ahora reporta cupo **x/17** (antes 13): quedan 7 submits hoy.

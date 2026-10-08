@@ -56,6 +56,8 @@ dos modelos es ±3 M y entre cortes anidados del mismo ranking ±4 M.
 | el mismo ranking a 14.000, 20 semillas | **103,00** | 87 (base a 13.000) | el óptimo se corrió a la derecha |
 | desacople: lags con params viejos / base con la receta, 10.000 | 96,43 / 97,06 | 93,24 | +3,2 y +3,8, aditivos: los dos cambios valen por separado |
 | target BAJA+2 puro / sin marzo / lags sobre rangos, a 14.000 | 98,82 / 100,95 / 103,16 | 104,16 | −5,3 / −3,2 / −1,0: ninguna mejora; `pesos` 0,25, los cuatro meses y los lags crudos se quedan |
+| **ensamble por rank de las 20 semillas, un archivo, 14.000** | **104,17** | 103,00 (20 sueltos) | +1,2 por Jensen; **la entrega vigente** |
+| Optuna (AUC en jun+jul): trial medio con 4 semillas / ensamble heterogéneo de 20 modelos | 100,91 / 101,97 | 104,17 | −3,3 / −2,2: la búsqueda sobreajustó a sus meses (confirmado antes en mayo, `c222`) |
 
 La curva del modelo vigente, 5 archivos por punto:
 
