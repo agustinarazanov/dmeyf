@@ -15,6 +15,10 @@ fundamento; lo que no tiene fundamento no se manda.
 | 5 | Reparaciones de datos: `ccajas_depositos + ccajas_otras` (reclasificación abr–jun); sacar `*_mconsumototal` (duplica `mconsumospesos`); NA en centinelas de `*_Fvencimiento` (< −1.000.000); NA en `mfinanciacion_limite` > 10× `mlimitecompra`; `ccajas_depositos` NA en 202105 | Ramírez D01, Denicolay (`En Limpio` 1.1) | Solo `ccajas_depositos` NA hecho. El resto pendiente, barato, un dataset `c202` |
 | 6 | 202107 con corrección positive-unlabeled: BAJA+1 conocidos como positivos, y **sacar** los negativos que el base puntúa alto (los ~870 BAJA+2 escondidos) | `c168` perdió 33,7 M al etiquetarlos negativos; la ley de envejecimiento dice que un mes de distancia vale puntos de captura; Aramendía en Zulip: "los BAJA+1 de 202107 sí sirven" | Pendiente. Validación limpia: train [03,04] + [05 con BAJA+1 y negativos podados] → val 202106 BAJA+2 |
 
+## B0. Primero de todo: desacoplar FE de hiperparámetros (8-oct, submit 1 y 2)
+`lags12 + params z701` y `base + receta Denicolay`, 5 semillas cada uno, corte 10.000 y 14.000, contra
+`c201` (100,25 / 104,16) y `c191` (93,24). Sin esto el +7 no está atribuido (mismo error que `c133_todo`).
+
 ## B. Ideas nuevas, por orden de expectativa × costo
 
 ### B1. Target: tres variantes sobre el ranking nuevo

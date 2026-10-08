@@ -1548,3 +1548,25 @@ usuaria si quiere).
 
 Conciliado el ledger con el DM de Zulip: `c190_fe3_{9000,10000,11000}` (90,93 / 93,49 / 92,39) y
 `c191_base10000` (93,24) dados de alta; `c153_histmin9k` (93,24) y `c154_entrega_9000` (97,24) cerrados.
+
+### Retractación de "el modelo está saturado" (sesión competencia-1, 7-oct noche)
+
+Dos días concluyendo que no había nada más que hacer, con evidencia consistente —la grilla de meses, 18
+configuraciones sin mejora, el instrumento público sin resolución— y la conclusión era falsa. El motivo es
+estructural: **los folds A y B no pueden medir features de historia profunda**. En A se entrena con 202103,
+que no tiene mes anterior, así que lag 1 está vacío; lag 2 está vacío en TODO el entrenamiento de los dos
+folds. "El FE histórico no suma" se midió con un instrumento que por construcción no podía ver el efecto, y
+se reportó como hallazgo firme. La usuaria lo marcó dos veces y las dos tenía razón.
+
+> **Lección operativa**: antes de concluir que algo no sirve, preguntarse si el instrumento PODRÍA haberlo
+> visto. Si no, el resultado no es evidencia en contra: es ausencia de medición. Cualquier feature que
+> necesite 3+ meses de historia es invisible en los folds actuales; el único instrumento que la ve es el
+> público (y, parcialmente, el fold C).
+
+### Diseño del desacople (primer submit del 8-oct)
+
+`c201` cambió dataset e hiperparámetros a la vez, como `c133_todo` el 5-oct. Para atribuir el +7:
+`lags12` con los params de `z701` (dataset nuevo, receta vieja) y `base` con la receta de Denicolay
+(dataset viejo, receta nueva). Con `c201` y los seis `base+z701` ya medidos, las cuatro celdas quedan
+cubiertas. Si el salto es de los lags, la receta se deja; si es de la receta, revisar qué más cambia
+(`min_data_in_leaf` 0 y `min_sum_hessian` escalado por filas es otro régimen).
