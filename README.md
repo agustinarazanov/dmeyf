@@ -54,6 +54,7 @@ dos modelos es ±3 M y entre cortes anidados del mismo ranking ±4 M.
 | sacar préstamos, deflactar, FE histórico de 80 col (los tres juntos) | 87,62 | 92,62 | pierde; el profesor lo confirmó: no sacar variables para 202108 |
 | **lags/deltas 1 y 2 de las 150 + receta de Denicolay**, 20 semillas, 10.000 | **100,03** | 93,24 | **+6,8 M pareado (mismas semillas, corte y partición), z ≈ 2,3** |
 | el mismo ranking a 14.000, 20 semillas | **103,00** | 87 (base a 13.000) | el óptimo se corrió a la derecha |
+| desacople: lags con params viejos / base con la receta, 10.000 | 96,43 / 97,06 | 93,24 | +3,2 y +3,8, aditivos: los dos cambios valen por separado |
 
 La curva del modelo vigente, 5 archivos por punto:
 

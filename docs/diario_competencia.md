@@ -1598,3 +1598,19 @@ horizonte 2, único fold que lo permite) a la cola de la noche para ver la forma
 
 Prevalencia estimada con modelo BAJA+2 puro: fold B 966 contra 1.098 reales (subestima 12% a distancia
 2); agosto **957 → corregido ≈ 1.090**. Dentro del rango observado; no explica el óptimo a la derecha.
+
+### 23:18 — el desacople: la mitad es el dataset, la mitad es la receta, y son aditivos
+
+Corte 10.000, 5 semillas (las mismas), misma partición:
+
+| | params `z701` | receta Denicolay |
+| --- | ---: | ---: |
+| base 150 col | 93,24 (`c191`, 20 sem.) | **97,06** (`c212`) |
+| lags12 750 col | **96,43** (`c211`) | **100,25** (`c201`; 100,03 con 20) |
+
+Lags solos +3,2; receta sola +3,8; juntos +7,0 ≈ 3,2 + 3,8. **Interacción ≈ 0**: ninguno es
+prescindible y cada uno vale lo suyo. Consecuencias: (1) la receta aporta también sobre las 150 crudas,
+así que el régimen `min_data_in_leaf` 0 + hessiano escalado merece la búsqueda de Optuna de A2;
+(2) el dataset aporta por sí mismo, así que las variantes de dataset (lags sobre rangos, reparaciones,
+transiciones) se miden con la receta fija. Cada celda tiene el ruido de ±3 de partición entre modelos;
+la lectura "aditivo" es la forma gruesa, no los decimales.
