@@ -1,0 +1,32 @@
+{
+  "rank_cv": 4,
+  "trial": 15,
+  "ganancia_cv": 1008718333.3333334,
+  "esquema": "pesos",
+  "peso": 0.91,
+  "num_boost_round": 1428,
+  "corte": 10000,
+  "regret_peor": -0.020625962031811218,
+  "oot_media": 317900000.0,
+  "oot_sd": 55614764.22677705,
+  "oot_202105": 262460000.0,
+  "oot_202106": 373340000.0,
+  "params": {
+    "objective": "binary",
+    "boosting_type": "gbdt",
+    "first_metric_only": true,
+    "boost_from_average": true,
+    "feature_pre_filter": false,
+    "verbose": -1,
+    "bagging_freq": 1,
+    "num_leaves": 88,
+    "learning_rate": 0.010071804826942796,
+    "min_data_in_leaf": 113,
+    "feature_fraction": 0.8444423504825241,
+    "bagging_fraction": 0.409919353017598,
+    "lambda_l1": 5.15546831633298e-08,
+    "lambda_l2": 9.26912680932806e-05,
+    "min_gain_to_split": 1.3382082184032242,
+    "max_bin": 17
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "params": {
+    "objective": "binary",
+    "boosting_type": "gbdt",
+    "first_metric_only": true,
+    "boost_from_average": true,
+    "feature_pre_filter": false,
+    "max_bin": 31,
+    "num_leaves": 45,
+    "learning_rate": 0.0077,
+    "min_data_in_leaf": 174,
+    "feature_fraction": 0.277,
+    "bagging_fraction": 0.918,
+    "bagging_freq": 1
+  },
+  "target": "pesos",
+  "peso_baja1": 0.25,
+  "meses_train": [
+    202103,
+    202104,
+    202105,
+    202106
+  ],
+  "num_boost_round": 250,
+  "corte": 11000,
+  "semillas": [
+    261431,
+    269281,
+    429899,
+    560771,
+    749401,
+    72635,
+    49886,
+    329840,
+    904620,
+    842203,
+    583252,
+    253684,
+    572096,
+    209582,
+    249236,
+    127531,
+    184378,
+    678107,
+    878049,
+    358170
+  ]
+}
