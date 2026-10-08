@@ -1816,3 +1816,19 @@ entre miembros 0,95–0,999. **−0,2: no suma ni resta.** La diversidad que nec
 en variantes del mismo dataset con la misma receta: todas ven lo mismo. El de 2.000 rondas es el menos
 correlacionado (0,95–0,97) y por eso es el único que movió el público solo. Cerrado A4 en su versión
 "promedio"; el stacking con meta-modelo no tiene con qué diversificar.
+
+### 8-oct 19:30 — préstamos, aguinaldo e inflación: qué se midió y qué queda
+
+- **Préstamos**: el modelo vigente les da 4,5% del gain (2,1% al monto del mes). Sacarlos está cerrado
+  por cuatro fuentes; transformarlos no tiene mecanismo que los lags no cubran (`mprestamos__delta1`
+  ya codifica "la deuda cae de golpe"). Nada más que hacer.
+- **Aguinaldo**: con el modelo sin historia era inerte (una alumna dividió por 1,5 y dio idéntico).
+  **Con lags no**: en agosto `mpayroll__delta2` = agosto − junio da **−35% a los 90.825 que cobran**
+  (mediana), y en junio la misma columna da +36%; ningún mes de entrenamiento tiene el patrón de
+  agosto. El modelo usa poco los delta2 de payroll (0,3% del gain) pero `mpayroll` + `cpayroll` pesan
+  11%. Reparación con mecanismo: `mpayroll` y `mpayroll2` de 202106 ÷ 1,5 antes de los lags
+  (`c252`, dataset generado; `c253` entrena con 2.000 rondas en la cola, detrás de la comisión).
+- **Inflación**: deflactar todos los montos por mediana (c127) y `rank_cero_fijo` (c167) perdieron;
+  lags sobre percentiles (c215) neutro. En seis meses el IPC acumula ~17% (0,888 → 0,757 según la
+  tabla de la cátedra) y los árboles con 31 bins no lo notan: lo que ordena es el rango entre
+  clientes dentro del mes. Cerrado; importaría con 36 meses.
