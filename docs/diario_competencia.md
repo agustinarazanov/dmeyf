@@ -1733,3 +1733,12 @@ medible. **No se adopta** (criterio: ante empate, la entrega sin código nuevo).
 - **Deadline**: Silvana Contreras escribe el jueves 8 "estamos a 3 días del cierre", que apunta al
   **domingo 11**, como el mensaje del profesor; el `help` del bot sigue diciendo `2026-10-11T03:01:01`.
   Sigue sin zanjarse; la entrega va adentro el sábado igual.
+
+### 8-oct 16:50 — julio positive-unlabeled (`c240`): 103,21 a 14.000, −1,0 contra `c201`
+
+Julio entra con sus 1.103 BAJA+1 como positivos (peso 0,25) y sin los 2.017 no-BAJA+1 del top 2.500 del
+ranking de `c201` (los candidatos a BAJA+2 escondido): 816.397 filas, 9.170 positivos. La selección
+solapa 96,2% con la de `c201`, así que el público solo podía ver ±2 M, y dio −1,0. **Neutro, no se
+adopta.** Lectura: el mes extra a distancia 1 no mueve un modelo que ya está saturado de datos (la
+grilla de meses de la semana pasada decía que 1 ≈ 2 ≈ 3 meses), y la poda no alcanza a limpiar lo que
+`c168` ensuciaba. Queda cerrado A6; B10 (pseudo-etiquetado completo) no tiene sentido después de esto.

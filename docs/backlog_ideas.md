@@ -13,7 +13,7 @@ fundamento; lo que no tiene fundamento no se manda.
 | 3 | Re-barrer el corte para el modelo nuevo | un ranking mejor captura más profundo y corre el óptimo a la derecha | **Hecho**: meseta 13.500–14.500, pico 14.000 (5 semillas). Repetir con 20 archivos y con el ensamble |
 | 4 | Stacking en vez de promedio: meta-modelo chico sobre los scores de varios preprocesamientos (base, lags crudos, lags rankeados, deflactado) | experimento colaborativo 2025: stackear tres preprocesamientos +14,2 M, promediarlos 0; nosotros vimos base+FE con correlación 0,99 y promedio sin efecto | Pendiente. Entrenar el meta-modelo con los scores del fold B (202106) y aplicarlo a los de 202108 |
 | 5 | Reparaciones de datos: `ccajas_depositos + ccajas_otras` (reclasificación abr–jun); sacar `*_mconsumototal` (duplica `mconsumospesos`); NA en centinelas de `*_Fvencimiento` (< −1.000.000); NA en `mfinanciacion_limite` > 10× `mlimitecompra`; `ccajas_depositos` NA en 202105 | Ramírez D01, Denicolay (`En Limpio` 1.1) | Solo `ccajas_depositos` NA hecho. El resto pendiente, barato, un dataset `c202` |
-| 6 | 202107 con corrección positive-unlabeled: BAJA+1 conocidos como positivos, y **sacar** los negativos que el base puntúa alto (los ~870 BAJA+2 escondidos) | `c168` perdió 33,7 M al etiquetarlos negativos; la ley de envejecimiento dice que un mes de distancia vale puntos de captura; Aramendía en Zulip: "los BAJA+1 de 202107 sí sirven" | Pendiente. Validación limpia: train [03,04] + [05 con BAJA+1 y negativos podados] → val 202106 BAJA+2 |
+| 6 | ~~202107 con corrección positive-unlabeled~~ MEDIDO 8-oct (`c240`): 103,21 a 14k, −1,0, neutro. Cerrado: BAJA+1 conocidos como positivos, y **sacar** los negativos que el base puntúa alto (los ~870 BAJA+2 escondidos) | `c168` perdió 33,7 M al etiquetarlos negativos; la ley de envejecimiento dice que un mes de distancia vale puntos de captura; Aramendía en Zulip: "los BAJA+1 de 202107 sí sirven" | Pendiente. Validación limpia: train [03,04] + [05 con BAJA+1 y negativos podados] → val 202106 BAJA+2 |
 
 ## B0. Desacoplar FE de hiperparámetros — HECHO 7-oct 23:18: lags +3,2, receta +3,8, aditivos
 `lags12 + params z701` y `base + receta Denicolay`, 5 semillas cada uno, corte 10.000 y 14.000, contra
@@ -73,7 +73,7 @@ entran como dimensiones del Optuna de A2, no hacen falta corridas aparte.
 German Reintgen (Zulip) lo reportó como su mejor ganancia y menor sobreajuste, "lentísimo". Con 6
 minutos por modelo GBDT, DART de 1.000 rondas es de madrugada. Solo si sobra una noche de máquina.
 
-### B10. Pseudo-etiquetado de 202107 y 202108 (versión del profesor)
+### B10. Pseudo-etiquetado de 202107 y 202108 — DESCARTADO sin medir: A6 (la versión conservadora) dio neutro
 `J-Clase 06 > Entrenar en CUATRO meses`: entrenar en los meses con clase, pintar una clase artificial en
 los meses sin clase con un corte de probabilidad, reentrenar con todos. Más agresivo que A6 (A6 solo
 poda negativos dudosos; esto inventa positivos). Riesgo de circularidad; el propio profesor lo plantea

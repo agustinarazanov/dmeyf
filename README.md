@@ -63,6 +63,7 @@ dos modelos es ±3 M y entre cortes anidados del mismo ranking ±4 M.
 | **ensamble por rank de las 20 semillas, un archivo, 14.000** | **104,17** | 103,00 (20 sueltos) | +1,2 por Jensen; **la entrega vigente** |
 | Optuna (AUC en jun+jul): trial medio con 4 semillas / ensamble heterogéneo de 20 modelos | 100,91 / 101,97 | 104,17 | −3,3 / −2,2: la búsqueda sobreajustó a sus meses (confirmado antes en mayo, `c222`) |
 | reparaciones de datos + 36 transiciones + 4 recencias (`c231`), 14.000 | 102,58 | 104,16 | −1,6, dentro del ruido: no se adopta |
+| julio como positive-unlabeled (`c240`), 14.000 | 103,21 | 104,16 | −1,0: el mes extra no mueve un modelo saturado de datos |
 
 La curva del modelo vigente, 5 archivos por punto:
 
