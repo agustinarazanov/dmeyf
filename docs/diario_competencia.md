@@ -1807,3 +1807,12 @@ BAJA+2 cuesta 1.072.500, 39 veces más. Una regla con ratio 2,7:1 que saque del 
 pague hace falta una señal con precisión > 39:1, y ninguna variable ni la tipología del video 1
 (que describe patrones de fuga, no horizontes) está cerca. Cerrado: el BAJA+1 en el top es un costo
 estructural, y la única palanca sobre él es el peso en el entrenamiento (0,25).
+
+### 8-oct 19:10 — ensamble de los buenos (`c245`): 104,00 contra 104,17. Idéntico
+
+Ensamble por rank de cinco ensambles de 5 semillas (receta 1.000, 2.000 rondas, lags sobre rangos,
+dataset reparado, julio PU; 25 modelos). Solapa 97,8% con la entrega vigente; correlaciones de rango
+entre miembros 0,95–0,999. **−0,2: no suma ni resta.** La diversidad que necesita un ensamble no está
+en variantes del mismo dataset con la misma receta: todas ven lo mismo. El de 2.000 rondas es el menos
+correlacionado (0,95–0,97) y por eso es el único que movió el público solo. Cerrado A4 en su versión
+"promedio"; el stacking con meta-modelo no tiene con qué diversificar.
