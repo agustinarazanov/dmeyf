@@ -22,6 +22,7 @@ Objetivo: elegir a qué clientes de la foto `202108` mandar el estímulo de rete
 | Semillas | 261431, 269281, 429899, 560771, 749401 + 15 sorteadas con `np.random.seed(261431)` | `competencia.SEMILLAS` |
 | Ensamble | promedio de **rangos** (no de probabilidades) de las semillas | `competencia.ensamble_por_rank` |
 | Corte | **14.000**: público (9 cortes, meseta 13.500–14.500) y cálculo local a horizonte 2 (`c216`: minimax 13.500, mínimo esperado 14.000) coinciden | `scripts/c216_captura_foldB.py` |
+| Archivo entregado | `experimentos/c201_receta_lags/envios_14000/c201_receta_lags_14000_ens.csv`, un solo archivo (el ensamble), SHA-256 `5157ac24…b4ae9` | `reproducir.py` |
 
 ## 2. Cómo reproducir
 
@@ -31,10 +32,13 @@ python reproducir.py --salida entrega_final.csv
 ```
 
 `reproducir.py` parte del crudo de la cátedra en `data/` (symlink a `../dmeyf2026/monday/data`),
-reconstruye la clase, ordena las filas por `(numero_de_cliente, foto_mes)` —DuckDB no garantiza el
-orden y LightGBM depende de él—, entrena las 20 semillas y escribe el CSV ordenado por id. Imprime
-el SHA-256 para compararlo con el entregado. **Pendiente**: pasarlo al dataset de lags y a la receta
-(hoy todavía reproduce la entrega anterior, la base de 150 columnas a 10.000).
+reconstruye la clase, construye la historia (lag 1, delta 1, lag 2, delta 2 de las 150 variables),
+ordena las filas por `(numero_de_cliente, foto_mes)` —DuckDB no garantiza el orden y LightGBM depende
+de él—, entrena las 20 semillas con la receta, ensambla por rango y escribe los 14.000 ids ordenados.
+Imprime el SHA-256 y lo compara con el del archivo entregado
+(`5157ac24…b4ae9`, submit `c201_lags_ens20_14000`, 104,17 público). Determinismo fijado con
+`deterministic=True`, `force_col_wise=True` y 8 hilos; otra versión de LightGBM puede diferir en los
+clientes cercanos al corte.
 
 Para medir sin reentrenar: los modelos quedan en `experimentos/<exp>/modelo_<semilla>.txt` y los
 scores de 202108 en `scores_202108_s<semilla>.parquet`; `scripts/c201_cortar.py` re-corta en segundos.
