@@ -45,7 +45,7 @@ probabilidades; la suma de `p` sobre 202108 estima los positivos de agosto. Vali
 sobre 202106 (fold B) contra los 1.098 reales. Si calibra razonablemente, es un segundo instrumento
 para el corte, independiente del público. Costo: casi cero con un modelo K1 de B1.
 
-### B5. Features de transición y de recencia, robustas a la inflación
+### B5. Features de transición y de recencia — EN DATASET (`c230`, 800 col: 36 transiciones, 4 recencias, reparaciones de Ramírez); se entrena después de `c221`
 Indicadores "pasó a cero este mes" y "pasó a negativo" para las variables de monto, y "meses desde
 el último sueldo / desde la última transacción / desde que entró en rojo". Clara Rodríguez midió en
 Zulip transiciones a cero en `mcaja_ahorro` (32% → 41% en la cohorte BAJA+2) y `mpasivos_margen`.
@@ -57,7 +57,7 @@ lags continuos con `max_bin` 31. Costo: SQL en `fe_panel`, un dataset, un submit
 pesos entre junio (aguinaldo) y julio mide calendario, no conducta; un delta de percentil mide conducta.
 Abregu lo hace (`l1_rk0_`, `d1_rk0_`). Costo: `c202`, un entrenamiento, un submit.
 
-### B7. Bloque de nulos simultáneos como feature
+### B7. Bloque de nulos simultáneos — NO EXISTE en nuestro parquet (8-oct): los nulos vienen en 4 bloques estructurales (99.644 / 47.186 / 579.470 / 127.760 filas); el flag quedó constante en 0 y es inerte
 35.301 filas (3,5%) tienen todo el bloque de variables de negocio en nulo a la vez (Zulip, Alexander
 Arias). Para esas filas los lags y deltas salen nulos o espurios. Un flag `bloque_nulo` y su lag
 separan "el dato falta" de "el valor cambió". Costo: trivial; va junto con A5.

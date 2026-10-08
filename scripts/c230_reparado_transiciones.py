@@ -52,6 +52,7 @@ def main() -> None:
         raise SystemExit(f"{DESTINO.name} ya existe; --forzar para pisarlo")
     t0 = time.time()
     con = fe.conectar()
+    con.execute("set memory_limit = '3GB'; set threads = 2")   # convive con un entrenamiento en curso
     con.execute(f"create or replace view base as select * from read_parquet('{ORIGEN}')")
     campos = [x for x in fe.columnas_numericas(con, "base", excluir=tuple(c.ROTAS_EN_202108)) if x not in c.FUERA_DE_X]
     sacar = [x for x in campos if x.endswith("_mconsumototal")]
