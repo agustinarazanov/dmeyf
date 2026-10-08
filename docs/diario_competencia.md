@@ -1778,3 +1778,12 @@ ruido, pero con mecanismo: el `best_iter` de la búsqueda escalaba con los meses
 hace falta (a) 3.000 rondas para ver si sigue subiendo o ya baja, y (b) las 20 semillas con ensamble en
 un archivo, comparable con los 104,17 de la entrega vigente. Las dos van a la cola de esta noche.
 El submit fue el 13º del día y el bot lo aceptó con `13/17`; el 14º prueba el cupo nuevo.
+
+### 8-oct 18:49 — pesos de BAJA+1: 0,5 → 102,15 (−2,0); 1,0 → 102,80 (−1,4). El 0,25 se queda
+
+Las dos debajo de `c201` (104,16), dentro del ±3 pero las dos con el mismo signo. Con el −5,3 del target
+BAJA+2 puro (peso 0), la curva pública en el peso es 0 → 98,8 · 0,25 → 104,2 · 0,5 → 102,1 · 1,0 → 102,8:
+el 0,25 es el máximo y no es un artefacto del corte 11.000 como se temía. La hipótesis "más señal de
+BAJA+1 mejora la cabeza" era correcta en el fold B para 0 contra 0,25 pero no extrapola: a peso pleno
+el modelo aprende a rankear BAJA+1, que a 14.000 cuestan 27.500 cada uno y desplazan BAJA+2.
+El bot aceptó los submits 14º y 15º: **el cupo de 17 es real**. Quedan 2 hoy.

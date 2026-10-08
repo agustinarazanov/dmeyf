@@ -65,6 +65,7 @@ dos modelos es ±3 M y entre cortes anidados del mismo ranking ±4 M.
 | reparaciones de datos + 36 transiciones + 4 recencias (`c231`), 14.000 | 102,58 | 104,16 | −1,6, dentro del ruido: no se adopta |
 | julio como positive-unlabeled (`c240`), 14.000 | 103,21 | 104,16 | −1,0: el mes extra no mueve un modelo saturado de datos |
 | **receta con 2.000 rondas** (`c241`), 14.000 | **105,51** | 104,16 | +1,35: candidata; se confirma con 3.000 rondas y con 20 semillas |
+| peso de BAJA+1 0,5 / 1,0 (`c242`, `c243`), 14.000 | 102,15 / 102,80 | 104,16 | −2,0 / −1,4: el 0,25 es el máximo de la curva 0 → 0,25 → 0,5 → 1,0 |
 
 La curva del modelo vigente, 5 archivos por punto:
 

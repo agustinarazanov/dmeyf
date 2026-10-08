@@ -21,7 +21,7 @@ fundamento; lo que no tiene fundamento no se manda.
 
 ## B. Ideas nuevas, por orden de expectativa × costo
 
-### B1. Target: tres variantes sobre el ranking nuevo — MEDIDO 8-oct: BAJA+2 puro −5,3 a 14k. Refutado
+### B1. Target — MEDIDO 8-oct: peso 0 → −5,3, 0,5 → −2,0, 1,0 → −1,4 a 14k. El 0,25 es el máximo. Cerrado
 `BAJA+2` solo (K1), `BAJA+1 ∪ BAJA+2` (K2) y `pesos` 0,25 (lo actual). Ramírez midió en público K1 91,8
 contra K2 86,7 **con el mismo modelo**, y nosotros adoptamos `pesos` con evidencia que solo valía a
 11.000. Con el modelo nuevo nunca se midió. Costo: dos entrenamientos de 5 semillas (~1 h), dos submits.
