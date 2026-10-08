@@ -21,7 +21,7 @@ Objetivo: elegir a qué clientes de la foto `202108` mandar el estímulo de rete
 | Entrenamiento | 202103–202106, 654.066 filas, 8.067 positivos, sin undersampling | `scripts/c201` |
 | Semillas | 261431, 269281, 429899, 560771, 749401 + 15 sorteadas con `np.random.seed(261431)` | `competencia.SEMILLAS` |
 | Ensamble | promedio de **rangos** (no de probabilidades) de las semillas | `competencia.ensamble_por_rank` |
-| Corte | **banda 13.500–14.500**, medido en público el 7-oct (ver §3) | `scripts/c201_cortar.py` |
+| Corte | **14.000**: público (9 cortes, meseta 13.500–14.500) y cálculo local a horizonte 2 (`c216`: minimax 13.500, mínimo esperado 14.000) coinciden | `scripts/c216_captura_foldB.py` |
 
 ## 2. Cómo reproducir
 

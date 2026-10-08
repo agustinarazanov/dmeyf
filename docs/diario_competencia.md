@@ -1614,3 +1614,24 @@ así que el régimen `min_data_in_leaf` 0 + hessiano escalado merece la búsqued
 (2) el dataset aporta por sí mismo, así que las variantes de dataset (lags sobre rangos, reparaciones,
 transiciones) se miden con la receta fija. Cada celda tiene el ruido de ±3 de partición entre modelos;
 la lectura "aditivo" es la forma gruesa, no los decimales.
+
+### 00:46 — el corte a dos meses, calculado, coincide con el público: 13.500–14.000
+
+`c216`: receta sobre lags12, entrenada en `[03,04]` (fold B, horizonte 2, 1.098 BAJA+2 reales en 202106),
+3 semillas, ensamble por rank. Ganancia **real** en junio por corte y arrepentimiento bajo las cuatro
+prevalencias observadas:
+
+| K | 10.000 | 12.000 | 13.000 | **13.500** | **14.000** | 14.500 | 15.000 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| ganancia real 202106 (M) | 370,7 | 389,4 | 400,4 | 405,4 | **407,0** | 404,3 | 401,5 |
+| regret peor caso % | 9,6 | 4,7 | 1,8 | **0,5** | 0,6 | 2,7 | 4,8 |
+
+**Minimax 13.500, mínimo esperado 14.000.** El fold C (horizonte 1) daba 9.500–10.500: el horizonte
+cambia la forma de la cola, y la tarea real es a dos meses. Público (agosto, 9 cortes): meseta
+13.500–14.500 con pico en 14.000. **Dos instrumentos independientes, misma banda.** Decisión: el corte
+de la entrega es **14.000** salvo que el modelo final (que tendrá más historia que este fold, lo que
+corre el óptimo a la derecha, no a la izquierda) diga otra cosa con 20 archivos.
+
+Cola de la noche completa. Rankings nuevos con envíos a 10.000 y 14.000 (5 semillas): `c213_lags_baja2`
+(target BAJA+2 puro), `c214_lags_sin03` (abril–junio), `c215_lagsrank` (lags sobre rangos por mes).
+Sin medir en público todavía: 9 submits disponibles hasta las 21:00.
