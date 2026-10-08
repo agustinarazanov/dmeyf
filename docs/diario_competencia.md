@@ -1647,3 +1647,18 @@ Sin medir en público todavía: 9 submits disponibles hasta las 21:00.
 Ninguna le gana a `c201`. El "ganador se repite a 10.000" no aplica: no hay ganador. Quedan 6 submits.
 Lo que sigue es la búsqueda sobre el régimen de la receta (`c220`, Optuna por AUC en los folds B y C,
 corriendo de madrugada) y el ensamble heterogéneo del top de trials; después reparaciones + transiciones.
+
+### 8-oct 11:05 — ¿la búsqueda de Optuna eligió semillas afortunadas? Medido: no
+
+Objeción (punto 1 del profesor, reiterada por la usuaria): `c220` evalúa cada trial con UNA semilla.
+Ruido de semilla del AUC, medido con los tres modelos del fold B de `c216` (receta, 3 semillas) sobre
+202106: **0,90195 / 0,90185 / 0,90219, sd 0,00017**. La diferencia del mejor trial (#14, 0,90502 en el
+fold B) contra la receta (trial 0, 0,90215) es 0,00287 = **~17 desvíos de semilla**. Los seis mejores
+trials (#9–#14) están todos a más de 10 desvíos. Conclusión: con AUC como objetivo, una semilla por
+trial alcanza; la maldición del ganador aparece cuando el objetivo es ganancia@K (4 clientes de ruido),
+no acá. Lo que la búsqueda **no** garantiza es que mejor AUC sea mejor ganancia a 14.000 en agosto:
+eso lo mide el público con el ensamble `c221`.
+
+Dirección de la búsqueda (16 trials, cortada a las 10:58): hojas 170–210 (la receta: 83), `ff` 0,55–0,65,
+`bynode` 0,11–0,16, hessiano por fila 1e-6 a 8e-6 (la receta: 3,9e-5), y rondas al tope de 2.500 en el
+fold C. O sea árboles más grandes y menos regularizados que la receta, con más rondas.
