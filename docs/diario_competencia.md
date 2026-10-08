@@ -1570,3 +1570,15 @@ se reportó como hallazgo firme. La usuaria lo marcó dos veces y las dos tenía
 (dataset viejo, receta nueva). Con `c201` y los seis `base+z701` ya medidos, las cuatro celdas quedan
 cubiertas. Si el salto es de los lags, la receta se deja; si es de la receta, revisar qué más cambia
 (`min_data_in_leaf` 0 y `min_sum_hessian` escalado por filas es otro régimen).
+
+### 22:21 — la lectura pareada con 20 archivos
+
+| submit | corte | público | referencia | delta |
+| --- | ---: | ---: | --- | ---: |
+| `c201_lags20_10000` | 10.000 | **100,03** (sd 1,29) | `c191_base10000` 93,24, mismas 20 semillas, mismo corte, misma partición | **+6,8 M** |
+| `c201_lags20_14000` | 14.000 | **103,00** (sd 1,96) | `c201_lags_14000` 104,16 con 5 semillas | el pico de 5 semillas era 1,2 optimista |
+
+El +7 de 5 semillas se sostiene con 20: **+6,8 M pareado** (≈6 clientes públicos, z ≈ 2,3 con el ±3 de
+partición entre modelos). 14.000 contra 10.000 del mismo ranking: +3,0 M, dentro del ±4 de cortes
+anidados; lo que sostiene la banda alta es la forma de la curva de 9 puntos, no este par. Sigue sin
+atribuirse entre dataset y receta (B0 del backlog, primer submit del 8-oct).

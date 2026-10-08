@@ -52,8 +52,8 @@ dos modelos es ±3 M y entre cortes anidados del mismo ranking ±4 M.
 | corte 9.000 de ese ranking | 94,22 | 91,36 | la base pica en 9.000 y cae 11 M hasta 15.000 |
 | FE de `z402` (historia de 21 variables, 228 col) | 91,11 | 94,22 | z = −1, no concluyente |
 | sacar préstamos, deflactar, FE histórico de 80 col (los tres juntos) | 87,62 | 92,62 | pierde; el profesor lo confirmó: no sacar variables para 202108 |
-| **lags/deltas 1 y 2 de las 150 + receta de Denicolay**, 5 semillas, 10.000 | **100,25** | 93,24 | **+7 M al mismo corte, z ≈ 2,3** |
-| el mismo ranking a 14.000 | **104,16** | 87 (base a 13.000) | el óptimo se corrió a la derecha |
+| **lags/deltas 1 y 2 de las 150 + receta de Denicolay**, 20 semillas, 10.000 | **100,03** | 93,24 | **+6,8 M pareado (mismas semillas, corte y partición), z ≈ 2,3** |
+| el mismo ranking a 14.000, 20 semillas | **103,00** | 87 (base a 13.000) | el óptimo se corrió a la derecha |
 
 La curva del modelo vigente, 5 archivos por punto:
 
