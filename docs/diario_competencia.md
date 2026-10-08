@@ -1709,3 +1709,27 @@ Nota operativa: el bot ahora reporta cupo **x/17** (antes 13): quedan 7 submits 
 Dentro del ruido (±3), con más dispersión entre semillas (sd 2,55 contra 1,3–2,2 de las demás). Las
 reparaciones de Ramírez y las 40 features binarias no agregan sobre lags12; tampoco restan de forma
 medible. **No se adopta** (criterio: ante empate, la entrega sin código nuevo). Quedan 6 submits hoy.
+
+### 8-oct 16:15 — Zulip del día: no hay anuncio del cupo 17; sí hay una tabla Public vs Private
+
+- El bot pasó de `x/13` a `x/17` entre el submit de las 16:11 y el siguiente. En los 48 mensajes de los
+  streams archivados desde el 7-oct al mediodía **no hay ningún anuncio**; si lo hubo fue en un canal
+  privado (`Cognitive Overloading`) o es un cambio silencioso del bot. Se toma el 17 como dato del bot.
+- **[197324] Denicolay, `general > Private vs Public`, 8-oct 18:56**, sobre todos los submits del curso
+  con 10 o más archivos (≈7.300):
+
+  | público | private < 300 | private > 300 | % > 300 |
+  | --- | ---: | ---: | ---: |
+  | < 95 | 2.659 | 25 | 1% |
+  | 95–100 | 1.706 | 115 | 6% |
+  | **100–105** | **1.829** | **327** | **15%** |
+  | > 105 | 349 | 257 | 42% |
+
+  `mean(Public/Private) = 2,98` (o sea private ≈ 3 × público, el 75% contra el 25%). **El umbral
+  que el profesor mira en private es 300 M**, que es la línea de muerte de ~100 público. Nuestro
+  104,17 cae en la banda donde solo el 15% supera 300 en private: estar arriba de 105 en público
+  casi triplica la chance (42%). El propio profesor atribuye el sesgo a que "los submits sucesivos
+  van overfiteando el Public": la gente resube lo que anduvo bien en lo que ve.
+- **Deadline**: Silvana Contreras escribe el jueves 8 "estamos a 3 días del cierre", que apunta al
+  **domingo 11**, como el mensaje del profesor; el `help` del bot sigue diciendo `2026-10-11T03:01:01`.
+  Sigue sin zanjarse; la entrega va adentro el sábado igual.
