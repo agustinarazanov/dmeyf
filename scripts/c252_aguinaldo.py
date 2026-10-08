@@ -19,7 +19,7 @@ import fe_panel as fe
 import competencia as c
 ORIGEN = c.DATOS / "competencia_01_lags12.parquet"
 DESTINO = c.DATOS / "competencia_01_aguinaldo.parquet"
-COLS = ["mpayroll", "mpayroll2"]
+COLS = ["mpayroll", "mpayroll2", "cpayroll_trx"]
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--forzar", action="store_true"); a = ap.parse_args()
@@ -28,7 +28,10 @@ def main():
     derivadas = [f"{x}__{s}" for x in COLS for s in ("lag1", "delta1", "lag2", "delta2")]
     con.execute(f"create or replace view base as select * exclude ({', '.join(COLS + derivadas)}) from read_parquet('{ORIGEN}')")
     con.execute(f"create or replace view crudo as select {fe.ID}, {fe.MES}, {', '.join(COLS)} from read_parquet('{c.DATOS / 'competencia_01.parquet'}')")
-    corr = ", ".join(f"case when {fe.MES} = 202106 then {x} / 1.5 else {x} end as {x}" for x in COLS)
+    # montos: / 1,5 (medio aguinaldo). Acreditaciones: en junio el 70% tiene 2+ (sueldo + SAC) contra 40% normal -> una menos
+    corr = ", ".join(
+        f"case when {fe.MES} = 202106 and {x} >= 2 then {x} - 1 else {x} end as {x}" if x.startswith("c") else
+        f"case when {fe.MES} = 202106 then {x} / 1.5 else {x} end as {x}" for x in COLS)
     lags = []
     for x in COLS:
         lags += [f"lag({x}, 1) over historia :: FLOAT as {x}__lag1", f"({x} - lag({x}, 1) over historia) :: FLOAT as {x}__delta1",

@@ -1832,3 +1832,21 @@ correlacionado (0,95–0,97) y por eso es el único que movió el público solo.
   lags sobre percentiles (c215) neutro. En seis meses el IPC acumula ~17% (0,888 → 0,757 según la
   tabla de la cátedra) y los árboles con 31 bins no lo notan: lo que ordena es el rango entre
   clientes dentro del mes. Cerrado; importaría con 36 meses.
+
+### 8-oct 19:45 — escaneo de calendario en las 600 columnas derivadas: lo que llega distorsionado a agosto
+
+Para cada lag/delta, fracción de negativos (entre no-cero) en agosto contra mayo y junio. Lo que se mueve
+por calendario y no por conducta:
+
+| columna cruda | qué pasa | cómo llega a agosto | reparación |
+| --- | --- | --- | --- |
+| `mpayroll`, `mpayroll2` | junio ×1,5 (aguinaldo) | `delta2` −35% a todos los que cobran | ÷1,5 en junio (`c252`) |
+| `cpayroll_trx` | junio: 70% con 2+ acreditaciones | `delta2` negativo | −1 en junio donde ≥ 2 (`c252`) |
+| `cliente_vip` | 921 en junio contra ~430 | `delta2` negativo a ~490 | junio ← valor de mayo (`c254`) |
+| `Visa_delinquency` | inyectada en 05 y 08 (4.344 / 4.163 vs ~950) | `delta1` positivo en agosto; en junio (train) negativo | 0 donde `Visa_Finiciomora = 0` en 05 y 08 (`c254`) |
+| `*_fultimo_cierre` | reloj de calendario | ya medido: inerte | — |
+| `Visa_mpagado` | ×3 en 05 y 08 (ciclo de tarjeta) | pagos reales del ciclo | no se toca |
+| `Master_mfinanciacion_limite` | outliers en abril (media ×6) | `lag2` de junio | reparación de Ramírez ya medida en `c231`: neutro |
+
+Datasets generados: `aguinaldo` (`c252`, regenerado con `cpayroll_trx`) y `calendario` (`c254` = aguinaldo + vip
++ delinquency). Entrenan con 2.000 rondas en la cola (`c253`, `c255`) contra los 105,51 de `c241`.
