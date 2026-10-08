@@ -55,6 +55,7 @@ dos modelos es ±3 M y entre cortes anidados del mismo ranking ±4 M.
 | **lags/deltas 1 y 2 de las 150 + receta de Denicolay**, 20 semillas, 10.000 | **100,03** | 93,24 | **+6,8 M pareado (mismas semillas, corte y partición), z ≈ 2,3** |
 | el mismo ranking a 14.000, 20 semillas | **103,00** | 87 (base a 13.000) | el óptimo se corrió a la derecha |
 | desacople: lags con params viejos / base con la receta, 10.000 | 96,43 / 97,06 | 93,24 | +3,2 y +3,8, aditivos: los dos cambios valen por separado |
+| target BAJA+2 puro / sin marzo / lags sobre rangos, a 14.000 | 98,82 / 100,95 / 103,16 | 104,16 | −5,3 / −3,2 / −1,0: ninguna mejora; `pesos` 0,25, los cuatro meses y los lags crudos se quedan |
 
 La curva del modelo vigente, 5 archivos por punto:
 

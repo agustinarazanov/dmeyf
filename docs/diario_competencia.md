@@ -1635,3 +1635,15 @@ corre el óptimo a la derecha, no a la izquierda) diga otra cosa con 20 archivos
 Cola de la noche completa. Rankings nuevos con envíos a 10.000 y 14.000 (5 semillas): `c213_lags_baja2`
 (target BAJA+2 puro), `c214_lags_sin03` (abril–junio), `c215_lagsrank` (lags sobre rangos por mes).
 Sin medir en público todavía: 9 submits disponibles hasta las 21:00.
+
+### 01:13 (8-oct) — las tres variantes de la noche, a 14.000, contra `c201` (104,16, 5 semillas, misma partición)
+
+| variante | qué cambia | público | delta | lectura |
+| --- | --- | ---: | ---: | --- |
+| `c213_lags_baja2` | target BAJA+2 puro | 98,82 | **−5,3** | refutado: `pesos` 0,25 se queda. Lo de Ramírez (K1 > K2) era de su modelo, no transfiere |
+| `c214_lags_sin03` | entrena 04–06 | 100,95 | **−3,2** | refutado: la ley de distancia/cantidad pesa más que la historia vacía de marzo, igual que con el base |
+| `c215_lagsrank` | lags sobre percentiles por mes | 103,16 | −1,0 | neutro (±3): rankear antes de los lags no agrega; los árboles ya absorben la escala |
+
+Ninguna le gana a `c201`. El "ganador se repite a 10.000" no aplica: no hay ganador. Quedan 6 submits.
+Lo que sigue es la búsqueda sobre el régimen de la receta (`c220`, Optuna por AUC en los folds B y C,
+corriendo de madrugada) y el ensamble heterogéneo del top de trials; después reparaciones + transiciones.

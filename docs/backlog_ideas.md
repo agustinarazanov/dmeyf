@@ -21,12 +21,12 @@ fundamento; lo que no tiene fundamento no se manda.
 
 ## B. Ideas nuevas, por orden de expectativa × costo
 
-### B1. Target: tres variantes sobre el ranking nuevo
+### B1. Target: tres variantes sobre el ranking nuevo — MEDIDO 8-oct: BAJA+2 puro −5,3 a 14k. Refutado
 `BAJA+2` solo (K1), `BAJA+1 ∪ BAJA+2` (K2) y `pesos` 0,25 (lo actual). Ramírez midió en público K1 91,8
 contra K2 86,7 **con el mismo modelo**, y nosotros adoptamos `pesos` con evidencia que solo valía a
 11.000. Con el modelo nuevo nunca se midió. Costo: dos entrenamientos de 5 semillas (~1 h), dos submits.
 
-### B2. Meses de entrenamiento con lags: `[04,05,06]` contra `[03..06]`
+### B2. Meses de entrenamiento con lags — MEDIDO 8-oct: sin marzo −3,2 a 14k. Refutado
 Con lags, marzo tiene **todas** las columnas de historia nulas y abril no tiene lag 2: el patrón de
 nulos vuelve a codificar el mes (ya se midió que explicaba ~6 de 47 M en el FE viejo). "Sacar marzo"
 perdió para el base por la ley de distancia, pero el trade-off cambia cuando marzo aporta 1/4 de las
@@ -52,7 +52,7 @@ Zulip transiciones a cero en `mcaja_ahorro` (32% → 41% en la cohorte BAJA+2) y
 Son binarias, así que no sufren inflación ni drift de escala, y el árbol no las reconstruye bien desde
 lags continuos con `max_bin` 31. Costo: SQL en `fe_panel`, un dataset, un submit.
 
-### B6. Lags sobre rangos por mes (la variante de A1)
+### B6. Lags sobre rangos por mes — MEDIDO 8-oct: −1,0 a 14k, neutro. No se adopta
 `percent_rank` dentro de `foto_mes` de los 73 montos **antes** de calcular lag y delta. Un delta de
 pesos entre junio (aguinaldo) y julio mide calendario, no conducta; un delta de percentil mide conducta.
 Abregu lo hace (`l1_rk0_`, `d1_rk0_`). Costo: `c202`, un entrenamiento, un submit.
