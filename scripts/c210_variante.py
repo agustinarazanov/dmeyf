@@ -45,6 +45,7 @@ def main() -> None:
     ap.add_argument("--meses", type=int, nargs="+", default=[202103, 202104, 202105, 202106])
     ap.add_argument("--semillas", type=int, default=5)
     ap.add_argument("--cortes", type=int, nargs="+", default=[10_000, 14_000])
+    ap.add_argument("--rondas", type=int, default=None, help="num_boost_round; por defecto 1.000 (receta) o 250 (z701)")
     args = ap.parse_args()
     t0 = time.time()
     carpeta = c.EXPERIMENTOS / args.nombre
@@ -62,9 +63,11 @@ def main() -> None:
         P, nbr = params_receta(len(X)), 1_000
     else:
         P, nbr = PARAMS_Z701, 250
+    if args.rondas:
+        nbr = args.rondas
     print(f"  {args.nombre}: {args.dataset} | {len(pred)} predictoras | {args.params} | "
           f"{args.target} {args.peso_baja1 if args.target == 'pesos' else ''} | meses {args.meses} | "
-          f"{len(X):,} filas, {int(y.sum()):,} positivos [{time.time()-t0:.0f}s]", flush=True)
+          f"{len(X):,} filas, {int(y.sum()):,} positivos | {nbr} rondas [{time.time()-t0:.0f}s]", flush=True)
 
     scores = {}
     for i, s in enumerate(semillas_c107(args.semillas), 1):

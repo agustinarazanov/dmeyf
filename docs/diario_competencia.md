@@ -1858,3 +1858,12 @@ Datasets generados: `aguinaldo` (`c252`, regenerado con `cpayroll_trx`) y `calen
 > `Visa_delinquency = 1` con `Visa_Finiciomora = 0` es "venció ayer y no pagó": **mora fresca por definición,
 > no inyección**; ponerla en 0 es una decisión de modelado (el patrón de calendario de 05/08 no está en el
 > train con el mismo signo), no una reparación. Los tres quedan así documentados en `c252`/`c254`.
+
+### 8-oct 20:20 — el "3.000 rondas" (`c244`) fue 2.000 otra vez: submit desperdiciado, y prueba de determinismo
+
+El bot devolvió **105,512, sd 1,7919: idéntico a `c241` hasta el cuarto decimal**. La cola generaba `c244`
+con un `sed` sobre `nbr = 2000` que no matcheaba (`P, nbr = params_receta(len(X)), 2000`): entrenó 2.000
+rondas con otro nombre de caché, una hora de máquina y el 17º submit del día perdidos. Lo único que
+dice el resultado es que el pipeline es determinista bit a bit entre corridas. `c210` ahora tiene
+`--rondas`; las 3.000 de verdad van a la cola de la noche con ese flag, y se deja de generar scripts con
+`sed`. La curva de rondas sigue teniendo dos puntos: 1.000 → 104,16 y 2.000 → 105,51.
