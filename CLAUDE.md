@@ -1,6 +1,8 @@
 # Primera Competencia DMEyF 2026 — mapa del repo
 
 Repo propio de la competencia (antes vivía en `dmeyf2026/monday/competencia/`, el fork de la cátedra).
+Remoto `origin` = `git@github.com:agustinarazanov/dmeyf.git`; **se commitea y pushea directo a `main`**
+(git plano; GitButler quedó instalado pero el workspace se desarmó con `but teardown` el 8-oct).
 Cierra el **sábado 10 de octubre 23:59 ART según el reloj del bot** (`2026-10-11T03:01:01` UTC);
 Zulip dice domingo 11. Se entrega el sábado.
 

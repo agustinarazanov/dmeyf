@@ -10,3 +10,4 @@ __pycache__/
 .env.local
 # lo que SI se versiona dentro de experimentos: envios/*.csv, *.json, *.md
 .env
+experimentos/**/*.db
