@@ -2016,3 +2016,17 @@ signo (corregido a `delta/|lag|`, la versión medida tenía el error); `p_pago_s
 regenera a dos días del cierre; `verificar_seleccion` ya no carga 121 MB por corrida.
 **Pendiente del review:** `reproducir.py` tiene 1.000 rondas y el SHA de c201 fijos: se parametriza y se corre
 de punta a punta esta noche con la entrega decidida (20 semillas × 2.000 rondas ≈ 4 h).
+
+### 18:15 — tarde: feature_fraction, reducción agresiva, candidato de 40, y una cola que se cayó
+- **c264 ff 0,4: 104,26 (sd 2,7) · c265 ff 0,3: 103,89 (sd 2,5).** Dentro de la banda (103,85–105,51): el único
+  botón de la receta que faltaba tampoco mueve. Barrido de hiperparámetros completo: rondas, hojas, hessiano, ff.
+- **c263 (392 columnas): 102,05**, −1,8 contra la media de 20; con c262 (−1,1) la reducción por importancia pierde
+  de forma consistente en las dos intensidades. Cerrada. La lectura: las columnas "muertas" por ganancia igual
+  sirven de ruido útil en el muestreo de columnas (más diversidad entre árboles), o la importancia en train no es
+  la que vale en agosto.
+- **c270 (horizonte 1) falló a las 15:10** por un `choices` del argparse sin `baja1`; nadie miró el log hasta las
+  18:03 y c264/c265/c263 esperaron 3 h para medirse. Relanzado a las 18:05, termina ~19:20. Después: mezcla
+  semilla a semilla (`c271`, peso 0,3) y submit.
+- **c272, ensamble de 40 (20×1.000 + 20×2.000): 103,02 en público.** Los tres ensambles de un archivo: 104,17 /
+  103,79 / 103,02, todos dentro del ruido de un archivo (±1,5) pero con orden desfavorable al de 40. Solapamiento
+  con cada ens20: ~13.500 de 14.000. **La entrega se decide con Agustina**, no con estos tres números.

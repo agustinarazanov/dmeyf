@@ -40,7 +40,7 @@ def main() -> None:
     ap.add_argument("--nombre", required=True)
     ap.add_argument("--dataset", default="competencia_01_lags12.parquet")
     ap.add_argument("--params", choices=["z701", "receta"], default="receta")
-    ap.add_argument("--target", choices=["baja2", "baja12", "pesos"], default="pesos")
+    ap.add_argument("--target", choices=["baja1", "baja2", "baja12", "pesos"], default="pesos")
     ap.add_argument("--peso-baja1", type=float, default=0.25)
     ap.add_argument("--meses", type=int, nargs="+", default=[202103, 202104, 202105, 202106])
     ap.add_argument("--semillas", type=int, default=5)

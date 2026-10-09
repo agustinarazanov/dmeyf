@@ -87,12 +87,12 @@ como "bomba lógica" para probar. Costo: dos entrenamientos. Después de A6.
 Totales Visa+Master / deuda / ingresos / inversiones; cuántos canales y productos activos; fotos seguidas en
 rojo, sin sueldo, sin consumo, sin operar; `x / lag1(x) − 1`. Las crudas se quedan (no son escalados).
 
-### B14. Reducción de dimensionalidad por importancia — c262 (sin 52 muertas) 102,71, −1,1 vs media de 20: no medible, tira a negativo. c263 (392 cols) en cola
+### B14. Reducción de dimensionalidad por importancia — MEDIDO 9-oct: c262 (sin 52) −1,1, c263 (392 cols) −1,8 vs media de 20. Pierde en las dos intensidades. Cerrado
 52 de 750 columnas no tienen un solo split en 20 modelos; 392 juntan el 99% de la ganancia. Con
 `ff` 0,5 × `bynode` 0,2, cada split muestrea ~75 columnas: sacar las muertas sube la probabilidad de que
 las vivas estén. Dos niveles: sin las 52 (conservador) y solo las 392 (agresivo).
 
-### B15. feature_fraction 0,4 / 0,3 — EN COLA 9-oct (`c264`, `c265`)
+### B15. feature_fraction 0,4 / 0,3 — MEDIDO 9-oct: 104,26 / 103,89, dentro de la banda. No mueve. Cerrado
 El único botón de la receta nunca barrido; Abregu +6,8 con 0,40. 2.000 rondas, 5 semillas.
 
 ### B16. Miembro de horizonte 1 — EN COLA 9-oct (`c270`)
