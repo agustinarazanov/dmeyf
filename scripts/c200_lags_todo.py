@@ -1,4 +1,8 @@
-"""Dataset con lag 1, delta 1, lag 2 y delta 2 de TODAS las predictoras.
+"""
+NOTA (review monday-45, 9-oct): ccajas_depositos tambien esta casi muerta en 202106 (831 no-cero contra 2.175-6.486 los
+otros meses); el delta2 de agosto apunta a junio y queda inflado para ~5.800 clientes. 0,23% de la ganancia: no se
+regenero el dataset a dos dias del cierre. Si se vuelve a construir, anular 202106 tambien.
+Dataset con lag 1, delta 1, lag 2 y delta 2 de TODAS las predictoras.
 
 Es la receta que Denicolay dejo en Zulip (J-Clase 08 > En Limpio, 2026-10-06):
 "es superador agregar al dataset lags y delta lags de orden 1 y 2", y la que

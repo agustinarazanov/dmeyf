@@ -38,7 +38,7 @@ cancela ruido de orden; modelos distintos (otro `num_leaves`, otro `ff`, otro da
 Salida natural del Optuna de A2: promediar los rangos del top-5 de trials. Abregu: 40 semillas no
 mejoran sobre 20, o sea el ruido de semilla ya está agotado.
 
-### B4. Estimar la prevalencia de agosto con un modelo calibrado
+### B4. Estimar la prevalencia de agosto con un modelo calibrado — MEDIDO 9-oct: sum(p) = 957, K* = 8.626; contradice la curva pública (14k > 13k > 10k), que mide agosto directo. Descartado como instrumento de K
 El corte depende de cuántos BAJA+2 hay en agosto (870–1.139 en los meses vistos) y lo venimos
 infiriendo del barrido público. Un modelo con target `BAJA+2` puro y `objective binary` da
 probabilidades; la suma de `p` sobre 202108 estima los positivos de agosto. Validar: la misma suma
@@ -87,10 +87,17 @@ como "bomba lógica" para probar. Costo: dos entrenamientos. Después de A6.
 Totales Visa+Master / deuda / ingresos / inversiones; cuántos canales y productos activos; fotos seguidas en
 rojo, sin sueldo, sin consumo, sin operar; `x / lag1(x) − 1`. Las crudas se quedan (no son escalados).
 
-### B14. Reducción de dimensionalidad por importancia — EN COLA 9-oct (`c262`, `c263`)
+### B14. Reducción de dimensionalidad por importancia — c262 (sin 52 muertas) 102,71, −1,1 vs media de 20: no medible, tira a negativo. c263 (392 cols) en cola
 52 de 750 columnas no tienen un solo split en 20 modelos; 392 juntan el 99% de la ganancia. Con
 `ff` 0,5 × `bynode` 0,2, cada split muestrea ~75 columnas: sacar las muertas sube la probabilidad de que
 las vivas estén. Dos niveles: sin las 52 (conservador) y solo las 392 (agresivo).
+
+### B15. feature_fraction 0,4 / 0,3 — EN COLA 9-oct (`c264`, `c265`)
+El único botón de la receta nunca barrido; Abregu +6,8 con 0,40. 2.000 rondas, 5 semillas.
+
+### B16. Miembro de horizonte 1 — EN COLA 9-oct (`c270`)
+Target BAJA+1 solo, meses 03–07 (julio tiene BAJA+1 completo y sin BAJA+2 escondidos). Mezcla por rank con
+c241 semilla a semilla (peso 0,3), 5 archivos contra 5. Review `monday-45`.
 
 ### B11. Submit de 16.000 filas
 El `help` del bot no menciona tope; los 8.000–15.000 son del mensaje del profesor. Si el bot acepta,

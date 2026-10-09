@@ -70,7 +70,8 @@ la banda 13.000–14.500, no en 9.000–10.000 como la base.
 - **Si una variable se escala, deflacta, rankea o normaliza, entra la transformada y sale la original.**
   Un cociente o una suma no es una transformación de una columna, es información nueva: ahí las crudas
   se quedan (c260, c261).
-- **Reducción de dimensionalidad** se considera siempre, pero por importancia medida, no por PCA (el
+- **Reducción de dimensionalidad** se considera siempre (no contradice la regla 6: esa prohíbe sacar variables
+  *por drift*; esto es por importancia medida), pero por importancia medida, no por PCA (el
   profesor lo lista como inútil) ni por canaritos (los dejó para la segunda). Con `feature_fraction` 0,5 ×
   `bynode` 0,2 cada split ve ~75 columnas al azar; las muertas le roban lugar a las vivas.
   `experimentos/c241_rondas2000/importancia_20.csv` es la medición base (20 modelos).

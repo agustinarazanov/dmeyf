@@ -1971,3 +1971,48 @@ Importancia: en c261 las 88 columnas nuevas se llevan el **28,8%** de la gananci
 2ª columna del modelo, 5,1%; después `s_ingresos`, `r_sin_sueldo`, `s_deuda_total`); en c260 las 55 proporciones
 se llevan el 20,5% (`p_trx_producto` 2ª, 4,5%). El modelo las prefiere a las crudas en train y pierde en agosto:
 es la firma de una variable que explica mejor el pasado que el futuro, no de una variable inerte.
+
+### 13:50 — code review de `monday-45` (pedido por Agustina): corrección del instrumento
+**El error que señala y es cierto:** la referencia 105,51 (c241, 5 semillas) es el **máximo** de ~8 submits de 5
+archivos y está +1,7 sobre la media de sus 20 semillas (103,85). Con sd por archivo 1,8–2,5, la media de 5 tiene
+sd ≈ 0,9: todo |Δ| < 2 medido con 5 archivos **no es medible**, y comparado contra el máximo sale −1 por
+construcción. Releídas contra la banda honesta (103,85 … 105,51; las 5 primeras semillas tienen suerte parecida
+en c201 (+1,2) y c241 (+1,7), así que la referencia justa está entre las dos):
+
+| variante | público | vs 105,51 | vs 103,85 | veredicto |
+| --- | ---: | ---: | ---: | --- |
+| c251 comisiones deflactadas | 104,56 | −0,95 | +0,7 | no medible |
+| c253 aguinaldo | 104,52 | −1,0 | +0,7 | no medible |
+| c260 proporciones | 104,62 | −0,9 | +0,8 | no medible |
+| c249 127 hojas | 104,12 | −1,4 | +0,3 | no medible |
+| c246 3.000 rondas | 103,80 | −1,7 | −0,05 | no medible |
+| c255 calendario | 103,49 | −2,0 | −0,4 | no medible |
+| c261 agregados | 103,27 | −2,2 | −0,6 | no medible |
+| c262 sin 52 muertas | 102,71 | −2,8 | −1,1 | no medible, tira a negativo |
+| c247 hessiano ×0,5 | 102,23 | −3,3 | −1,6 | probablemente pierde |
+| c248 hessiano ×2 | 101,49 | −4,0 | −2,4 | pierde |
+
+Lo que se sostiene: nada supera a la receta + 2.000 rondas de forma medible; los dos hessianos pierden. Lo que
+se retira: "c261 pierde", "c260 neutro", "óptimo local" como afirmación fuerte. **Regla nueva: una variante se
+adopta solo con 20 semillas contra las 20 de c241 (103,85).** Ninguna de las de arriba llega a +0,8 sobre la
+cota baja, así que ninguna justifica 3 h de 15 semillas más.
+
+**B4, corte por prevalencia (gratis, con los modelos BAJA+2 puros de c213 cacheados):** `sum(p)` sobre
+202108 = **957** positivos esperados (sd 6 entre semillas; los meses de train tienen 960/1.139/870/1.098). La p
+calibrada cruza 0,025 en **K\* = 8.626** (8.564–8.678 por semilla), con ganancia esperada 375 M contra 339 M a
+14.000. Pero el mismo modelo a 14.000 dio 98,8 en público y la curva pública (20 archivos) dice 14.000 > 13.000
+> 10.000: la probabilidad calibrada en 03–06 subestima la cola en agosto. Del público a 14.000 (104 ≈ 182
+positivos en 3.500 envíos públicos) se infieren ~730 capturados en el mes contra 658 que predice el modelo, y en
+la banda 13.000–14.000 el público captura ~2,7% contra 1,5% predicho. **Instrumento descartado para fijar K**:
+la curva pública mide agosto directamente; queda 14.000. Lo que sí deja: 13.000 vs 14.000 es +0,55 con sd
+0,45, o sea un cara o cruz, y el downside de pasarse está acotado (27,5 k por envío).
+
+**Lo que se hizo del review:** `--ff` en c210 (feature_fraction nunca se barrió; Abregu +6,8 con 0,40) → c264
+(0,4) y c265 (0,3) en cola; target `baja1` en `competencia.preparar` → c270 horizonte 1 (03–07, BAJA+1
+completo en julio, sin contaminación de BAJA+2 escondidos) en cola, para mezclar por rank con c241 **por
+semilla** (5 archivos contra 5, misma suerte de semillas); crecimiento `x/lag1−1` con lag negativo invertía el
+signo (corregido a `delta/|lag|`, la versión medida tenía el error); `p_pago_saldo_visa` con saldo acreedor
+(corregido, ídem); `ccajas_depositos` casi muerta también en 202106 (831 no-cero): anotado en c200, no se
+regenera a dos días del cierre; `verificar_seleccion` ya no carga 121 MB por corrida.
+**Pendiente del review:** `reproducir.py` tiene 1.000 rondas y el SHA de c201 fijos: se parametriza y se corre
+de punta a punta esta noche con la entrega decidida (20 semillas × 2.000 rondas ≈ 4 h).

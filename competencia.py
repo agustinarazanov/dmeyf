@@ -68,12 +68,15 @@ def preparar(data: pd.DataFrame, meses: list[int], target: str = "baja2",
 
     target 'baja2'  : positivo = BAJA+2
     target 'baja12' : positivo = BAJA+1 o BAJA+2
+    target 'baja1'  : positivo = BAJA+1 solo (horizonte 1: permite entrenar con 202107, que tiene BAJA+1 completo)
     target 'pesos'  : positivo = BAJA+1 o BAJA+2, con peso 1 para BAJA+2 y
                       peso_baja1 para BAJA+1. Interpola entre los dos anteriores.
     """
     d = data[data[fe.MES].isin(meses)]
     clase = d[fe.CLASE].to_numpy()
-    if target == "baja2":
+    if target == "baja1":
+        y = (d[fe.CLASE] == "BAJA+1").astype("int8").to_numpy(); peso = np.ones(len(d))
+    elif target == "baja2":
         y = (clase == "BAJA+2").astype("int8")
         peso = np.ones(len(d))
     elif target in ("baja12", "pesos"):
@@ -249,6 +252,13 @@ def regret(escenarios: dict[str, np.ndarray], desde: int = MIN_ENVIOS,
 def corte_minimax(escenarios: dict[str, np.ndarray], **kw) -> tuple[int, pd.DataFrame]:
     tabla = regret(escenarios, **kw)
     return int(tabla["peor_caso"].idxmax()), tabla
+
+
+def referencia_202108() -> pd.DataFrame:
+    """Solo las columnas y el mes que usa verificar_seleccion: evita cargar y ordenar 121 MB por corrida."""
+    return pd.read_parquet(DATOS / "competencia_01.parquet",
+                           columns=[fe.ID, fe.MES, "ctrx_quarter", "mcuentas_saldo", "cpayroll_trx"],
+                           filters=[(fe.MES, "==", MES_COMPETENCIA)])
 
 
 def verificar_seleccion(elegidos, data, mes: int = MES_COMPETENCIA,

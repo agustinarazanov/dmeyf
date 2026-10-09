@@ -46,8 +46,8 @@ PROPS = {
     "p_saldo_sueldo":     "mcuentas_saldo / nullif(mpayroll, 0)",
     "p_prestamo_sueldo":  "mprestamos_personales / nullif(mpayroll, 0)",
     "p_consumo_sueldo":   "Visa_mconsumototal / nullif(mpayroll, 0)",
-    "p_pago_saldo_visa":  "Visa_mpagado / nullif(Visa_msaldototal, 0)",
-    "p_minimo_saldo_visa": "Visa_mpagominimo / nullif(Visa_msaldototal, 0)",
+    "p_pago_saldo_visa":  "Visa_mpagado / nullif(greatest(Visa_msaldototal, 0), 0)",   # saldo acreedor (< 0) -> nulo; la version medida dividia por el saldo con signo
+    "p_minimo_saldo_visa": "Visa_mpagominimo / nullif(greatest(Visa_msaldototal, 0), 0)",
     "p_ahorro_share":     "mcaja_ahorro / nullif(abs(mcaja_ahorro) + abs(mcuenta_corriente), 0)",
     "p_trx_producto":     "ctrx_quarter / nullif(cproductos, 0)",
 }

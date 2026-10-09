@@ -96,7 +96,8 @@ def main() -> None:
     # paso 1: sumas, conteos, condiciones de racha (0/1), crecimientos
     paso1 = [f"({e}) :: FLOAT as {n}" for n, e in {**SUMAS, **CONTEOS}.items()]
     paso1 += [f"(case when {e} then 1 else 0 end) :: TINYINT as {n}__c" for n, e in RACHAS.items()]
-    paso1 += [f"({x} / nullif(lag({x}, 1) over historia, 0) - 1) :: FLOAT as {x}__crec1" for x in CRECIMIENTO]
+    # delta / |lag|: con lag negativo (saldo en rojo) x/lag-1 invertia el signo (review monday-45; la version medida en c261 tenia ese error)
+    paso1 += [f"(({x} - lag({x}, 1) over historia) / nullif(abs(lag({x}, 1) over historia), 0)) :: FLOAT as {x}__crec1" for x in CRECIMIENTO]
     # paso 2: rachas encadenadas y lags/deltas de sumas y conteos
     paso2 = []
     for n in RACHAS:

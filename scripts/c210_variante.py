@@ -48,6 +48,7 @@ def main() -> None:
     ap.add_argument("--rondas", type=int, default=None, help="num_boost_round; por defecto 1.000 (receta) o 250 (z701)")
     ap.add_argument("--hojas", type=int, default=None, help="num_leaves (receta: 83)")
     ap.add_argument("--columnas", type=Path, default=None, help="archivo con una columna por linea: se entrena SOLO con esas predictoras (reduccion de dimensionalidad por importancia)")
+    ap.add_argument("--ff", type=float, default=None, help="feature_fraction (receta: 0,5)")
     ap.add_argument("--hessian", type=float, default=None, help="factor sobre min_sum_hessian_in_leaf de la receta (1,0 = 12,79 x filas / 326.184)")
     args = ap.parse_args()
     t0 = time.time()
@@ -75,6 +76,8 @@ def main() -> None:
         nbr = args.rondas
     if args.hojas:
         P = {**P, "num_leaves": args.hojas}
+    if args.ff:
+        P = {**P, "feature_fraction": args.ff}
     if args.hessian:
         P = {**P, "min_sum_hessian_in_leaf": P["min_sum_hessian_in_leaf"] * args.hessian}
     print(f"  {args.nombre}: {args.dataset} | {len(pred)} predictoras | {args.params} | "
@@ -97,7 +100,7 @@ def main() -> None:
 
     ens = c.ensamble_por_rank(scores)
     pd.DataFrame({c.fe.ID: ids, "ensamble": ens}).to_parquet(carpeta / f"scores_202108_ens{len(scores)}.parquet")
-    ref = c.cargar("competencia_01.parquet")
+    ref = c.referencia_202108()
     validos = set(ids.tolist())
     for K in args.cortes:
         E = carpeta / f"envios_{K}"
