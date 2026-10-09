@@ -2030,3 +2030,40 @@ de punta a punta esta noche con la entrega decidida (20 semillas × 2.000 rondas
 - **c272, ensamble de 40 (20×1.000 + 20×2.000): 103,02 en público.** Los tres ensambles de un archivo: 104,17 /
   103,79 / 103,02, todos dentro del ruido de un archivo (±1,5) pero con orden desfavorable al de 40. Solapamiento
   con cada ens20: ~13.500 de 14.000. **La entrega se decide con Agustina**, no con estos tres números.
+
+### 20:40 — noche: la curva de pesos del horizonte 1, la curva fina de corte, y el cupo subió a 31
+- **c271 (0,7·c241 + 0,3·h1, semilla a semilla): 105,75 (sd 1,30)** contra los mismos 5 archivos de c241 (105,51).
+  Solo cambia 639 ids de 14.000. Con lo que quedaba del cupo se midió la **curva completa de peso, pareada por
+  semilla** (5 vs 5, misma suerte): peso 0 → 105,51 · 0,15 → **105,70** · 0,30 → **105,75** · 0,50 → **105,67** ·
+  0,70 → 103,65 · 1,0 (h1 solo, `c270`) → **99,92**. Lectura: el modelo de horizonte 1 solo vale −5,6 (medible);
+  mezclado hasta 0,5 es plano en +0,2, que no se distingue de cero; de 0,7 en adelante hunde. **No aporta señal
+  nueva**: BAJA+1 con julio no ve nada que el target `pesos` 0,25 en 03–06 no vea ya. B16 cerrado, no se adopta.
+- **El cupo del bot es 31/día** (lo dijo el bot en la respuesta: `cupo 20/31`). Ayer 17, hoy a la mañana 23, a la
+  noche 31. Las colas asumen el número que diga la última respuesta, no una constante.
+- **Curva fina de corte, 20 archivos por punto (sd de la media ≈ 0,45), mismas 20 semillas en los dos candidatos:**
+
+  | corte | c241 (2.000 rondas) | c201 (1.000 rondas) | Δ 2.000 − 1.000 |
+  | ---: | ---: | ---: | ---: |
+  | 10.000 | — | 100,03 | — |
+  | 12.000 | 101,12 | — | — |
+  | 13.000 | 103,30 | 101,74 | +1,56 |
+  | 13.500 | 103,56 | 102,69 | +0,87 |
+  | **14.000** | **103,85** | **103,00** | +0,85 |
+  | 14.500 | 103,37 | 102,50 | +0,87 |
+  | 15.000 | 102,81 | 101,32 | +1,49 |
+
+  Dos cosas salen limpias: **el pico está en 14.000 para los dos** (el corte no depende de cuál se entregue), y
+  **2.000 rondas gana en los cinco cortes, +0,85 a +1,56, pareado por semilla**. Eso ya no es un número suelto:
+  es la misma dirección en cinco mediciones independientes de sd 0,45. El candidato de 2.000 rondas queda
+  respaldado por la evidencia menos ruidosa que tenemos; el 104,17 del ensamble de c201 es un archivo solo.
+- 16.000 no se mandó: `enviar.py` lo rechaza por el rango 8.000–15.000 del profesor (B11 sigue siendo decisión
+  de Agustina, y la curva ya cae desde 14.500, así que no hay nada que ganar ahí).
+- Dos tropiezos de cola, ambos míos y sin costo de cupo: la primera corrida de `cola_0910_noche_pesos.sh` usó el
+  entorno `facultad` para `enviar.py` (no tiene `zulip`), dejó los submits en `preparado` y se reenvió con
+  `--reenviar`; el corte 16.000 falló en `c201_cortar` (mismo rango) y el submit no llegó a registrarse.
+- `reproducir.py --rondas 2000`: semilla 7/20 a las 20:35, ~11,5 min por semilla; termina ~23:05. Mañana a
+  primera hora se compara el SHA con `657d747a…`.
+- Cupo: 30/31 usados hoy; renueva a las 21:00 con 31 más (hasta el cierre del sábado a las 21:00 son 31 + lo
+  del sábado). **Pendiente con Agustina:** elegir la entrega (la evidencia de hoy apunta a 20 × 2.000 rondas a
+  14.000), fijar `SHA_FINAL`, actualizar el README con la tabla de arriba, y postear el link del repo en
+  `z-Entrega Final`.

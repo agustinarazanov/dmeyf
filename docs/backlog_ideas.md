@@ -95,11 +95,12 @@ las vivas estén. Dos niveles: sin las 52 (conservador) y solo las 392 (agresivo
 ### B15. feature_fraction 0,4 / 0,3 — MEDIDO 9-oct: 104,26 / 103,89, dentro de la banda. No mueve. Cerrado
 El único botón de la receta nunca barrido; Abregu +6,8 con 0,40. 2.000 rondas, 5 semillas.
 
-### B16. Miembro de horizonte 1 — EN COLA 9-oct (`c270`)
+### B16. Miembro de horizonte 1 — MEDIDO 9-oct (`c270`/`c271`): curva de peso pareada por semilla 0 → 105,51 · 0,15 → 105,70 · 0,3 → 105,75 · 0,5 → 105,67 · 0,7 → 103,65 · 1,0 → 99,92. Solo vale −5,6; mezclado es plano (+0,2, indistinguible de cero) hasta 0,5 y hunde desde 0,7. No aporta señal. Cerrado
 Target BAJA+1 solo, meses 03–07 (julio tiene BAJA+1 completo y sin BAJA+2 escondidos). Mezcla por rank con
-c241 semilla a semilla (peso 0,3), 5 archivos contra 5. Review `monday-45`.
+c241 semilla a semilla, 5 archivos contra 5 con la misma suerte de semillas (el diseño que deja ver ±0,5 en
+vez de ±1,5). Review `monday-45`. Lo que queda: BAJA+1 con el mes más fresco no ve nada que `pesos` 0,25 no vea.
 
-### B11. Submit de 16.000 filas
+### B11. Submit de 16.000 filas — la curva de 20 archivos ya cae desde 14.500 (103,37) y 15.000 (102,81): no hay nada que ganar; `enviar.py`/`c201_cortar` lo rechazan por rango
 El `help` del bot no menciona tope; los 8.000–15.000 son del mensaje del profesor. Si el bot acepta,
 un punto más de la curva (que ya baja en 15.000, así que la expectativa es confirmar el límite, no
 ganar). Hay que saltear `MAX_ENVIOS` y `MAX_FILAS` a propósito; lo corre la usuaria.
