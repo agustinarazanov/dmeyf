@@ -1963,3 +1963,7 @@ correlacionados. Se decide después de c260.
 Las 11 proporciones con sus lags no suman sobre las mismas 5 semillas; la sd sube (2,5 vs 1,8). Sexta variante
 de dataset seguida que queda dentro de ±1 de la referencia: el modelo parece saturado en información, no en
 representación. c261 (agregados) entrenando desde las 11:42; c262/c263 detrás.
+
+### 13:30 — c261 agregados: 103,27 (sd 2,2) a 14.000, −2,2 contra c241. Pierde
+Sumas, conteos, rachas y crecimientos restan sobre las mismas 5 semillas. Ver abajo cuánta ganancia se llevaron
+las columnas nuevas: el modelo las usa (desplazan a las crudas) pero no transfieren mejor a agosto.
