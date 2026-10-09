@@ -1967,3 +1967,7 @@ representación. c261 (agregados) entrenando desde las 11:42; c262/c263 detrás.
 ### 13:30 — c261 agregados: 103,27 (sd 2,2) a 14.000, −2,2 contra c241. Pierde
 Sumas, conteos, rachas y crecimientos restan sobre las mismas 5 semillas. Ver abajo cuánta ganancia se llevaron
 las columnas nuevas: el modelo las usa (desplazan a las crudas) pero no transfieren mejor a agosto.
+Importancia: en c261 las 88 columnas nuevas se llevan el **28,8%** de la ganancia (`n_productos_activos` es la
+2ª columna del modelo, 5,1%; después `s_ingresos`, `r_sin_sueldo`, `s_deuda_total`); en c260 las 55 proporciones
+se llevan el 20,5% (`p_trx_producto` 2ª, 4,5%). El modelo las prefiere a las crudas en train y pierde en agosto:
+es la firma de una variable que explica mejor el pasado que el futuro, no de una variable inerte.
