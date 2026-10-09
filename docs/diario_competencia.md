@@ -1884,3 +1884,15 @@ dice el resultado es que el pipeline es determinista bit a bit entre corridas. `
   reproduce a propósito; la exclusión de `cliente_antiguedad`/`*_status` de los lags cambiaría el
   dataset de comparación. Aceptado: barrido chico de hessiano (×0,5, ×2) y hojas (127) a 2.000 rondas,
   en la cola de la noche (`c247`–`c249`).
+
+### 22:30 — la máquina durmió: la cola c avanzó 2 semillas en 2 horas
+`pmset -g log`: desde las 20:56 el Mac entró en *Idle Sleep* en batería y solo despertó en *dark wakes* de
+45 segundos cada 15 minutos. La semilla 8/20 de c241 lleva 93 minutos de reloj y ~10 de CPU. Semillas 6 y 7
+tardaron 12 y 24 min (la 7 compitió con la regeneración de los datasets de aguinaldo/calendario).
+- Arreglo: `caffeinate -i -s -w <pid de cola_h>` (vale mientras esté enchufada; con la tapa cerrada en
+  batería igual se duerme). Quedan ~10 h de máquina: la cola termina ~08:30 del 9-oct si no duerme.
+- Cupo: el bot renovó a las 21:00; **17 disponibles hasta mañana 21:00**, ninguno gastado todavía.
+- `scripts/cola_0810_noche_envio_c.sh` espera el `fin` de la cola c y manda solo el ensamble de 20 de
+  2.000 rondas a 14.000 (`c241_rondas2000_ens20_14000`, delta contra `c201_lags_ens20_14000` = 104,17).
+  Es la primera medición planificada; el resto (comdefl, aguinaldo, calendario, 3.000 rondas, barrido)
+  se manda a mano al revisar cada resultado.
