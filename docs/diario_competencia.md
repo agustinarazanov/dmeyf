@@ -1907,3 +1907,43 @@ Seis citas comprobadas en Postgres (ids 189058/189080/191074/191563/197252/19739
   Ramírez, no de la cátedra. Contexto para leer el barrido c247/c248 mañana.
 - Public ≈ 25% / Private ≈ 75% del mes. Público 100–105 → 15% de private > 300; > 105 → 42%.
 Todo en `docs/pistas_profesor.md`.
+
+## 2026-10-09
+
+### 00:48 — envío automático: ensamble de 20 a 2.000 rondas = 103,79 (vs 104,17 del de 1.000)
+Un archivo contra un archivo: −0,4, dentro del ruido de un archivo (±1–2). No decide nada solo.
+
+### 10:35 — la tanda de 8 mediciones planificadas, todas a 14.000 (el bot respondió en un minuto; cupo ahora 23/día)
+
+| submit | qué cambia respecto a c241 (2.000 rondas, 5 sem.: 105,51) | público | Δ | lectura |
+| --- | --- | ---: | ---: | --- |
+| `c241_20` | las 20 semillas sueltas | 103,85 (sd 2,0) | **+0,85** vs c201 20 archivos (103,00) | 2.000 rondas suma, pero menos que el +1,35 de las 5 primeras semillas: esas 5 están +1,7 sobre su media de 20 (en c201, +1,2). **La comparación 20 vs 20 es la que vale** |
+| `c246` | 3.000 rondas (verificado en el log) | 103,80 | −1,7 | la curva de rondas pica en 2.000: 104,16 → 105,51 → 103,80 |
+| `c251` | comisiones deflactadas por tarifa | 104,56 (sd 1,1) | −0,95 | neutro. El drift de tarifa no le cuesta al modelo (o lo compensa con los lags) |
+| `c253` | SAC de junio normalizado | 104,52 (sd 1,1) | −1,0 | neutro. El artefacto de calendario existe pero el modelo no lo paga |
+| `c255` | c253 + vip + delinquency | 103,49 | −1,0 vs c253 | vip/delinquency restan algo; las tres juntas −2,0 |
+| `c247` | hessiano ×0,5 (12,8) | 102,23 | −3,3 | pierde |
+| `c248` | hessiano ×2 (51,3) | 101,49 | −4,0 | pierde |
+| `c249` | 127 hojas | 104,12 | −1,4 | pierde |
+
+**Lo que cierra:** la receta + 2.000 rondas es un óptimo local en hiperparámetros: rondas, hojas y
+hessiano pierden en las dos direcciones. Las dos reparaciones con mecanismo (tarifa, aguinaldo) son
+neutras con sd baja (1,1 vs 1,8 de la referencia: menos varianza entre semillas, misma media).
+Ninguna variante supera a c241 sobre las mismas 5 semillas.
+
+### 10:50 — curva de corte con 20 archivos (sd de la media ≈ 0,45)
+13.000 → 103,30 · **14.000 → 103,85** · 15.000 → 102,81. Pico en 14.000 confirmado con bajo ruido; a
+15.000 ya cuesta 1,0. Queda 14.000 para la entrega.
+
+### 10:55 — c260: proporciones de negocio (la sugerencia del profesor que faltaba)
+`scripts/c260_proporciones.py`: 11 cocientes pesos/pesos (utilización de tarjeta, consumo/límite,
+saldo/sueldo, préstamo/sueldo, pago/saldo Visa, mínimo/saldo, share de ahorro, trx/producto) con sus
+lags/deltas, 815 columnas. Mecanismo: invariantes a la inflación y mal aproximados por un árbol de
+`max_bin` 31. Entrenando 5 semillas × 2.000 rondas (~1 h). Definiciones citadas del diccionario en el
+docstring. Cupo: 11/23 usados; quedan 12 hasta las 21:00.
+
+**Decisión pendiente para la entrega:** entre `c201_lags_ens20` (1.000 rondas, 104,17 público) y
+`c241 ens20` (2.000 rondas, 103,79). La medición más confiable (20 vs 20 archivos) dice +0,85 para
+2.000 rondas; la de un archivo dice −0,4. El ensamble de 20 a 2.000 no gana sobre la media de sus
+semillas (103,79 vs 103,85) mientras que a 1.000 ganaba +1,2: con más rondas los modelos están más
+correlacionados. Se decide después de c260.

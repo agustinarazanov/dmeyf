@@ -16,14 +16,17 @@ RAIZ = Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
 sys.path.insert(0, str(RAIZ.parent))   # la raiz del repo: competencia.py y fe_panel.py
 import competencia as c  # noqa: E402
-from c201_receta_lags import CARPETA, NOMBRE, semillas_c107  # noqa: E402
+import c201_receta_lags as base  # noqa: E402
+from c201_receta_lags import semillas_c107  # noqa: E402
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--cortes", type=int, nargs="+", default=[10_000, 11_500])
     ap.add_argument("--semillas", type=int, default=20)
+    ap.add_argument("--experimento", default=None, help="carpeta en experimentos/ (default: c201_receta_lags)")
     args = ap.parse_args()
+    CARPETA, NOMBRE = (c.EXPERIMENTOS / args.experimento, args.experimento) if args.experimento else (base.CARPETA, base.NOMBRE)
 
     scores, ids = {}, None
     for s in semillas_c107(args.semillas):

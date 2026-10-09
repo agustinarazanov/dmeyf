@@ -62,7 +62,8 @@ Abregu lo hace (`l1_rk0_`, `d1_rk0_`). Costo: `c202`, un entrenamiento, un submi
 Arias). Para esas filas los lags y deltas salen nulos o espurios. Un flag `bloque_nulo` y su lag
 separan "el dato falta" de "el valor cambió". Costo: trivial; va junto con A5.
 
-### B8. Regularizadores que mejoran la transferencia entre meses
+### B8. Regularizadores — MEDIDO 9-oct (c247/c248/c249, a 2.000 rondas): hessiano ×0,5 −3,3, ×2 −4,0, 127 hojas −1,4; 3.000 rondas (c246) −1,7. La receta + 2.000 rondas es óptimo local. Cerrado
+#### (texto original)
 `extra_trees=True`, `path_smooth`, `monotone_constraints` en las variables de dirección conocida
 (`ctrx_quarter` baja el riesgo, `mcuentas_saldo` baja el riesgo) y `max_bin_by_feature` más grueso en
 las columnas que `c128` marcó con AUC móvil. Fundamento: el modelo pierde ~50 M por drift entre meses
@@ -85,6 +86,7 @@ un punto más de la curva (que ya baja en 15.000, así que la expectativa es con
 ganar). Hay que saltear `MAX_ENVIOS` y `MAX_FILAS` a propósito; lo corre la usuaria.
 
 ## C. Descartado con medición (no volver a probar sin un motivo nuevo)
+- 9-oct: comisiones deflactadas por tarifa (c251, −0,95), aguinaldo normalizado (c253, −1,0), vip + delinquency (c255, −1,0 más): neutras o peores, sd más baja. Corte con 20 archivos: 13k −0,55, 15k −1,0 contra 14k.
 
 - Sacar variables con drift para 202108 (préstamos incluidos): el profesor, `c133` en público, Abregu, Ramírez.
 - Deflactar por mediana mensual, `rank_cero_fijo`, FE histórico de 80 columnas sobre 21 variables.
