@@ -65,3 +65,12 @@ Las pistas del profesor, con ids de Zulip, están en `docs/pistas_profesor.md`.
 Ver `README.md` para el modelo vigente y la tabla pública. Última novedad: `c201_receta_lags`
 (lags/deltas 1 y 2 de todo + receta de Denicolay) cruzó los 100 públicos; su óptimo de corte está en
 la banda 13.000–14.500, no en 9.000–10.000 como la base.
+
+## Reglas de feature engineering (9-oct, Agustina)
+- **Si una variable se escala, deflacta, rankea o normaliza, entra la transformada y sale la original.**
+  Un cociente o una suma no es una transformación de una columna, es información nueva: ahí las crudas
+  se quedan (c260, c261).
+- **Reducción de dimensionalidad** se considera siempre, pero por importancia medida, no por PCA (el
+  profesor lo lista como inútil) ni por canaritos (los dejó para la segunda). Con `feature_fraction` 0,5 ×
+  `bynode` 0,2 cada split ve ~75 columnas al azar; las muertas le roban lugar a las vivas.
+  `experimentos/c241_rondas2000/importancia_20.csv` es la medición base (20 modelos).

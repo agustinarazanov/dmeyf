@@ -47,6 +47,7 @@ def main() -> None:
     ap.add_argument("--cortes", type=int, nargs="+", default=[10_000, 14_000])
     ap.add_argument("--rondas", type=int, default=None, help="num_boost_round; por defecto 1.000 (receta) o 250 (z701)")
     ap.add_argument("--hojas", type=int, default=None, help="num_leaves (receta: 83)")
+    ap.add_argument("--columnas", type=Path, default=None, help="archivo con una columna por linea: se entrena SOLO con esas predictoras (reduccion de dimensionalidad por importancia)")
     ap.add_argument("--hessian", type=float, default=None, help="factor sobre min_sum_hessian_in_leaf de la receta (1,0 = 12,79 x filas / 326.184)")
     args = ap.parse_args()
     t0 = time.time()
@@ -55,6 +56,11 @@ def main() -> None:
 
     d = c.cargar(args.dataset)
     pred = c.columnas_predictoras(d)
+    if args.columnas:
+        quedan = set(args.columnas.read_text().split())
+        faltan = quedan - set(pred)
+        assert not faltan, f"{len(faltan)} columnas de {args.columnas} no estan en el dataset: {sorted(faltan)[:5]}"
+        pred = [x for x in pred if x in quedan]
     X, y, w = c.preparar(d, args.meses, args.target, args.peso_baja1)
     X = X[pred]
     fut = d[d[c.fe.MES] == c.MES_COMPETENCIA]
@@ -83,7 +89,7 @@ def main() -> None:
             assert (t[c.fe.ID].to_numpy() == ids).all(), f"{ruta.name}: ids distintos del dataset actual"
             scores[s] = t["score"].to_numpy()
         else:
-            etq = f"{args.params}_{s}_{c.clave(P, args.meses, args.target, args.peso_baja1, args.dataset, nbr, s)}"
+            etq = f"{args.params}_{s}_{c.clave(P, args.meses, args.target, args.peso_baja1, args.dataset + (f"|{len(pred)}cols" if args.columnas else ""), nbr, s)}"
             m = c.entrenar_o_cargar(P, X, y, w, nbr, s, carpeta, etq)
             scores[s] = m.predict(Xfut)
             pd.DataFrame({c.fe.ID: ids, "score": scores[s]}).to_parquet(ruta)

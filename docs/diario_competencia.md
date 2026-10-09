@@ -1947,3 +1947,14 @@ docstring. Cupo: 11/23 usados; quedan 12 hasta las 21:00.
 2.000 rondas; la de un archivo dice −0,4. El ensamble de 20 a 2.000 no gana sobre la media de sus
 semillas (103,79 vs 103,85) mientras que a 1.000 ganaba +1,2: con más rondas los modelos están más
 correlacionados. Se decide después de c260.
+
+### 11:25 — columnas nuevas (pedido de Agustina) y reducción de dimensionalidad
+- `c261_agregados`: 10 sumas (deuda total, ingresos, inversiones, patrimonio, consumo de tarjetas, débitos
+  automáticos…), 5 conteos (canales usados, productos activos, seguros, tarjetas en cierre, trx por canal),
+  5 rachas (fotos seguidas en rojo / sin sueldo / sin consumo / sin operar / cayendo el saldo) y 8 crecimientos
+  `x / lag1(x) − 1`. 848 columnas. La racha en rojo sola ya separa: BAJA+2 0,37% (racha 0) → 2,70% (racha 4).
+- Importancia sobre los 20 modelos de c241: **52 columnas nunca usadas**, 129 usadas en ≤ 5 de 20; el 50% de
+  la ganancia está en 24 columnas, el 99% en 392. `ctrx_quarter`, `mcaja_ahorro`, `mpayroll`, `cpayroll_trx`,
+  `mpasivos_margen`, `mcuentas_saldo` encabezan; el primer lag aparece 8º (`ctrx_quarter__lag1`).
+- Cola de la tarde (en orden, ~1 h cada una): c260 proporciones → c261 agregados → c262 (sin las 52 muertas)
+  → c263 (solo las 392 del 99%). `c210 --columnas` nuevo. Reglas nuevas en `CLAUDE.md`.

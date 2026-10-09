@@ -80,6 +80,18 @@ los meses sin clase con un corte de probabilidad, reentrenar con todos. Más agr
 poda negativos dudosos; esto inventa positivos). Riesgo de circularidad; el propio profesor lo plantea
 como "bomba lógica" para probar. Costo: dos entrenamientos. Después de A6.
 
+### B12. Proporciones de negocio — EN CURSO 9-oct (`c260`)
+11 cocientes pesos/pesos con lags: invariantes a la inflación, mal aproximados por un árbol de `max_bin` 31.
+
+### B13. Sumas, conteos, rachas y crecimientos — EN COLA 9-oct (`c261`)
+Totales Visa+Master / deuda / ingresos / inversiones; cuántos canales y productos activos; fotos seguidas en
+rojo, sin sueldo, sin consumo, sin operar; `x / lag1(x) − 1`. Las crudas se quedan (no son escalados).
+
+### B14. Reducción de dimensionalidad por importancia — EN COLA 9-oct (`c262`, `c263`)
+52 de 750 columnas no tienen un solo split en 20 modelos; 392 juntan el 99% de la ganancia. Con
+`ff` 0,5 × `bynode` 0,2, cada split muestrea ~75 columnas: sacar las muertas sube la probabilidad de que
+las vivas estén. Dos niveles: sin las 52 (conservador) y solo las 392 (agresivo).
+
 ### B11. Submit de 16.000 filas
 El `help` del bot no menciona tope; los 8.000–15.000 son del mensaje del profesor. Si el bot acepta,
 un punto más de la curva (que ya baja en 15.000, así que la expectativa es confirmar el límite, no
