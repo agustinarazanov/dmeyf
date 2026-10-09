@@ -64,6 +64,46 @@ dimensionalidad y sin imputar nulos" [183214]. `scale_pos_weight`: "ni en pedo" 
 archivos (hasta 20) son los que entregan en un submit, y el bot les devuelve la media y la varianza,
 con lo cual reducen enormemente el overfitting (técnicamente NO lo eliminan por completo)."
 
+## De dónde sale la receta — `J-Clase 06 > un detalle insoslayable` [189058–189080], 18-sep
+- `z495_GustavoPasquini.ipynb` (adjunto en [187193]) optimiza solo `num_iterations`, `num_leaves` y
+  `min_sum_hessian_in_leaf`, y hace **4 × 3 = 12 iteraciones no inteligentes y 0 inteligentes**:
+  "simplemente se está quedando con la mejor de las 12". La receta de `En Limpio` no es un óptimo fino.
+- Rangos de su bayesiana ("MUY generosos, no hay trampa"): `num_iterations` 64–4096, `num_leaves`
+  16–2048, `min_sum_hessian_in_leaf` **1e-06–0,1 absoluto**, sobre ~13k filas (undersampling 0,1 en la
+  búsqueda, métrica average_precision). Por fila es hasta ~7e-6: la zona donde `c220` encontró su
+  óptimo y que después no transfirió (`c221` público, `c222` mayo).
+- El `12,791817 × filas / 326.184` **no es de Denicolay**: 326.184 son las filas de 202103+202104, es la
+  calibración de Ramírez. Nuestro barrido ×0,5/×2 (12,8 y 51 absolutos) pisa una región que ni la
+  cátedra ni `c220` recorrieron.
+
+## Entrega — confirmado por la tutora Silvana Contreras, `Tutorias > J_08` [197392], 8-oct 19:41
+- "Para la competencia final **vale el último que hayas enviado** y debe ser una submission de **un
+  solo archivo**." El bot lo repite en cada `list`: "The private gain is only known for your LAST
+  pre-deadline submission". → el último submit antes del cierre tiene que ser la entrega, de un archivo.
+- `z-Entrega Final > Primera Competencia` [191074], 29-sep: ahí se postea el link a GitHub con
+  scripts/notebooks e instrucciones "de forma que la cátedra sea capaz de replicar en forma exacta su
+  predicción final". **Al 8-oct 22:40 nadie posteó nada en ese tópico, nosotras tampoco.**
+- `general` [191563], 2-oct: "ir cambiando de a un registro para subir en el Public" es "actividad
+  ilícita". Nuestros submits de curva de corte van de a 500 y se registran como medición con hipótesis.
+- `J-Clase 06 > Canaritos` [197252], 8-oct 18:18: **Public ≈ 25% / Private ≈ 75%** de 202108. "El único
+  que cuenta para la aprobación y nota" es Private > 300. Al 8-oct 18:46 no hay leaderboard global
+  publicado; el podio eran "tres alumnas, una del lunes y dos del jueves" y "va bajando día a día".
+
+## La guía de la tutoría previa al cierre — Tutorias [193986], PDF en Drive
+Es el cuestionario de la cátedra y sirve de índice para el README: variables rotas; drift por
+inflación / dólar / UVA / ranking / ranking con cero fijo; imputación; FE intra e histórico; canaritos;
+particiones y meses; undersampling sí/no; target {BAJA+1, BAJA+2}; métrica; cuántas iteraciones de BO,
+qué entra y con qué bordes; feature importance; meses del final; ensembles; cómo deciden la cantidad
+de envíos; plan para los días que quedan; "¿identificaron cosas que tienen que hacer sí o sí?".
+Cada ítem tiene un experimento en el diario (c215 rank, c167 cero fijo, c127 deflactar, canaritos,
+c213/c242/c243 target, c220/c222 BO, c245 ensambles, curva de corte).
+
+## Cerrado con medición (sesión monday-3d, 8-oct): `*_fultimo_cierre` y `Visa_mpagado`
+Laura Pasquini [192773] reportó ceros raros; Denicolay no respondió. Medido sobre `competencia_01.parquet`:
+`*_fultimo_cierre` es reloj puro (moda por mes 1/2/5/0/3/6; el 0 de junio es el día modal, 113.299
+ceros, BAJA+2 0,52% con cero vs 0,47% sin); `Visa_mpagado` en 05 y 08 pasa de ~141k ceros a ~114k, o sea
+~27k clientes con pago real por ciclo. Nada que reparar.
+
 ## Cierre
 - Zulip [189817]: domingo 11-oct 23:59 ART. `help` del bot (6-oct): `2026-10-11T03:01:01` (UTC → sábado
   10 23:59 ART). Una tutora el jueves 8: "a 3 días del cierre" (→ domingo). **Sin zanjar; la entrega

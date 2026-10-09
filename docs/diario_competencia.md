@@ -1896,3 +1896,14 @@ tardaron 12 y 24 min (la 7 compitió con la regeneración de los datasets de agu
   2.000 rondas a 14.000 (`c241_rondas2000_ens20_14000`, delta contra `c201_lags_ens20_14000` = 104,17).
   Es la primera medición planificada; el resto (comdefl, aguinaldo, calendario, 3.000 rondas, barrido)
   se manda a mano al revisar cada resultado.
+
+### 22:45 — barrido de Zulip de `monday-3d`, verificado contra el archivo local
+Seis citas comprobadas en Postgres (ids 189058/189080/191074/191563/197252/197392). Lo que cambia:
+- **La entrega es el último submit antes del cierre y de un solo archivo** (tutora, [197392]). El
+  último envío del sábado tiene que ser la entrega, nunca una medición.
+- **Falta postear el link al repo** en `z-Entrega Final > Primera Competencia` [191074]; al 22:40 el
+  tópico tiene solo el mensaje del profesor. Lo decide Agustina (acción hacia afuera).
+- La receta es "la mejor de 12 configs al azar"; el hessiano `× filas / 326.184` es calibración de
+  Ramírez, no de la cátedra. Contexto para leer el barrido c247/c248 mañana.
+- Public ≈ 25% / Private ≈ 75% del mes. Público 100–105 → 15% de private > 300; > 105 → 42%.
+Todo en `docs/pistas_profesor.md`.
