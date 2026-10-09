@@ -1958,3 +1958,8 @@ correlacionados. Se decide después de c260.
   `mpasivos_margen`, `mcuentas_saldo` encabezan; el primer lag aparece 8º (`ctrx_quarter__lag1`).
 - Cola de la tarde (en orden, ~1 h cada una): c260 proporciones → c261 agregados → c262 (sin las 52 muertas)
   → c263 (solo las 392 del 99%). `c210 --columnas` nuevo. Reglas nuevas en `CLAUDE.md`.
+
+### 11:55 — c260 proporciones: 104,62 (sd 2,5) a 14.000, −0,9 contra c241. Neutro
+Las 11 proporciones con sus lags no suman sobre las mismas 5 semillas; la sd sube (2,5 vs 1,8). Sexta variante
+de dataset seguida que queda dentro de ±1 de la referencia: el modelo parece saturado en información, no en
+representación. c261 (agregados) entrenando desde las 11:42; c262/c263 detrás.

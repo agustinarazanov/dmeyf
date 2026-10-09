@@ -80,7 +80,7 @@ los meses sin clase con un corte de probabilidad, reentrenar con todos. Más agr
 poda negativos dudosos; esto inventa positivos). Riesgo de circularidad; el propio profesor lo plantea
 como "bomba lógica" para probar. Costo: dos entrenamientos. Después de A6.
 
-### B12. Proporciones de negocio — EN CURSO 9-oct (`c260`)
+### B12. Proporciones de negocio — MEDIDO 9-oct (`c260`): 104,62, −0,9, neutro. Cerrado
 11 cocientes pesos/pesos con lags: invariantes a la inflación, mal aproximados por un árbol de `max_bin` 31.
 
 ### B13. Sumas, conteos, rachas y crecimientos — EN COLA 9-oct (`c261`)
