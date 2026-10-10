@@ -2109,3 +2109,10 @@ reproduce las predicciones registradas **bit a bit** (max |Δp| = 0, 0 ids disti
   45% del gain), **c292** sin una de cada par con |r| ≥ 0,95 (42 fuera, 708 columnas; 40 pares, casi todos
   `mconsumospesos`~`mconsumototal` de Visa y Master y lags/deltas duplicados). Idea de clase (Ensambles, exp. 1:
   sacar `ctrx_quarter` del RF subió la ganancia de 239,8 a 250,3 M) y pregunta de Agustina sobre colinealidad.
+
+### 16:25 — c290, sin la variable más importante: pierde
+**Sin la familia `ctrx_quarter` (745 columnas): 102,71 (sd 1,74)** contra 105,51 de las mismas 5 semillas: −2,8,
+y −1,1 debajo de la media de 20. En el RF de la clase sacarla subía la ganancia (la info vive en otras variables y
+descorrelaciona los árboles); en LightGBM con `feature_fraction` 0,5 y 0,2 por nodo la descorrelación ya está y
+lo que queda es la pérdida de información. No es un punto único de falla (−2,8 de 105), pero tampoco es
+redundante. B17 cerrado. El cupo del bot subió a **41/día**.

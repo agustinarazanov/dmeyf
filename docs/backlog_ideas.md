@@ -100,6 +100,10 @@ Target BAJA+1 solo, meses 03–07 (julio tiene BAJA+1 completo y sin BAJA+2 esco
 c241 semilla a semilla, 5 archivos contra 5 con la misma suerte de semillas (el diseño que deja ver ±0,5 en
 vez de ±1,5). Review `monday-45`. Lo que queda: BAJA+1 con el mes más fresco no ve nada que `pesos` 0,25 no vea.
 
+### B17. Sacar las variables más importantes — MEDIDO 10-oct: sin `ctrx_quarter` (`c290`) 102,71, −2,8 pareado por semilla. Pierde. Pendientes `c291` (sin las 10 familias top) y `c292` (sin correlacionadas)
+Idea de la clase de ensambles (exp. 1): en el RF, sacar `ctrx_quarter` subía la ganancia. En LightGBM con
+muestreo de columnas no: la información no se recupera del todo por otras variables. Pregunta de Agustina.
+
 ### B11. Submit de 16.000 filas — la curva de 20 archivos ya cae desde 14.500 (103,37) y 15.000 (102,81): no hay nada que ganar; `enviar.py`/`c201_cortar` lo rechazan por rango
 El `help` del bot no menciona tope; los 8.000–15.000 son del mensaje del profesor. Si el bot acepta,
 un punto más de la curva (que ya baja en 15.000, así que la expectativa es confirmar el límite, no
