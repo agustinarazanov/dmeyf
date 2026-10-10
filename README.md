@@ -23,7 +23,7 @@ Objetivo: elegir a qué clientes de la foto `202108` mandar el estímulo de rete
 | Semillas | 261431, 269281, 429899, 560771, 749401 + 15 sorteadas con `np.random.seed(261431)` | `src/competencia.py` |
 | Ensamble | promedio de **rangos** (no de probabilidades) de las 20 semillas | `competencia.ensamble_por_rank` |
 | Corte | **14.000**: pico de la curva pública con 20 archivos por punto, y minimax del regret local a horizonte 2 en 13.500 (sección 3) | `scripts/c216_captura_foldB.py` |
-| Archivo entregado | `experimentos/c241_rondas2000/envios_14000/c241_rondas2000_ens20_14000.csv`, un solo archivo, SHA-256 `657d747addc61efad64145ec9cef550c29c50c5ce283745f176d243270bb9d2e`, 103,79 público | `reproducir.py` |
+| Archivo entregado | `experimentos/c241_rondas2000/envios_14000/c241_rondas2000_14000_ens20.csv` (en el ledger, submit `c241_rondas2000_ens20_14000`), un solo archivo, SHA-256 `657d747addc61efad64145ec9cef550c29c50c5ce283745f176d243270bb9d2e`, 103,79 público; reenviado como último submit el 10-oct 19:05 | `reproducir.py` |
 
 ## 2. Cómo reproducir
 
