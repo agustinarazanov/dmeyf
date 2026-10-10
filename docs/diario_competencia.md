@@ -2116,3 +2116,11 @@ y −1,1 debajo de la media de 20. En el RF de la clase sacarla subía la gananc
 descorrelaciona los árboles); en LightGBM con `feature_fraction` 0,5 y 0,2 por nodo la descorrelación ya está y
 lo que queda es la pérdida de información. No es un punto único de falla (−2,8 de 105), pero tampoco es
 redundante. B17 cerrado. El cupo del bot subió a **41/día**.
+
+### 17:20 — c291, sin las 10 familias más importantes: se derrumba
+**Sin las 10 familias top (50 columnas, 45% del gain; quedan 700): 87,21 (sd 1,24)**, −18,3 contra las mismas 5
+semillas. Vuelve al nivel del modelo base de la primera semana (87–94). La señal **no** es recuperable desde el
+resto: las 10 familias (actividad, saldos, sueldo, margen, préstamos, consumo de Visa, rentabilidad) no tienen
+sustitutos entre las otras 140. Junto con c290 (−2,8 sacando solo `ctrx_quarter`), la lectura es que la
+redundancia existe de a una variable (las otras nueve cubren parte de la actividad) pero no en bloque. Para el
+video de Michelina: el modelo se para sobre diez variables de negocio y la historia agrega encima, no al revés.
