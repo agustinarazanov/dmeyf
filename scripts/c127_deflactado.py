@@ -30,7 +30,7 @@ import lightgbm as lgb
 import numpy as np
 import pandas as pd
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 import fe_panel as fe
 import competencia as c
 

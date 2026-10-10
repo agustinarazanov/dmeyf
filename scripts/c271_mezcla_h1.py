@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 
 RAIZ = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(RAIZ))
+sys.path.insert(0, str(RAIZ / "src"))
 import competencia as c  # noqa: E402
 sys.path.insert(0, str(RAIZ / "scripts"))
 from c201_receta_lags import semillas_c107  # noqa: E402

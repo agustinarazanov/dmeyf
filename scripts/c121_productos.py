@@ -20,7 +20,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import wilcoxon
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 import fe_panel as fe
 import competencia as c
 

@@ -10,7 +10,7 @@ import argparse, sys, time
 from pathlib import Path
 import lightgbm as lgb, numpy as np, pandas as pd
 RAIZ = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(RAIZ))
+sys.path.insert(0, str(RAIZ / "src")); sys.path.insert(0, str(RAIZ))   # reproducir.py vive en la raiz
 import reproducir as r  # noqa: E402
 
 ap = argparse.ArgumentParser()

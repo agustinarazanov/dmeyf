@@ -14,7 +14,7 @@ import pandas as pd
 
 RAIZ = Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
-sys.path.insert(0, str(RAIZ.parent))   # la raiz del repo: competencia.py y fe_panel.py
+sys.path.insert(0, str(RAIZ.parent / "src"))   # la raiz del repo: competencia.py y fe_panel.py
 import competencia as c  # noqa: E402
 import c201_receta_lags as base  # noqa: E402
 from c201_receta_lags import semillas_c107  # noqa: E402

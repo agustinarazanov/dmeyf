@@ -15,18 +15,22 @@ El diario completo de decisiones, retractaciones y mediciones está en `docs/dia
 competencia-1/
 ├── README.md                 el reporte: modelo final, cómo reproducir, qué se probó y qué dio
 ├── CLAUDE.md                 este mapa
-├── reproducir.py             del crudo al CSV entregado, bit a bit, con las semillas
-├── competencia.py            datos, ganancia, corte, caché de modelos, escritura de envíos
-├── registro.py               el ledger en Postgres (base `competencia`, contenedor zulip-postgres)
-├── enviar.py                 ledger -> bot -> respuesta -> ledger, un submit por comando
-├── fe_panel.py               panel base + generadores de SQL (lags, deltas, ranks, ventanas)
-├── scripts/cNNN_*.py         un experimento por script, numerados; tmp_recuperados/ los que
-│                             estaban solo en /tmp (c114–c190)
+├── reproducir.py             LA ENTREGA: del crudo al CSV entregado, bit a bit, con las semillas
+├── src/                      lo que se importa
+│   ├── competencia.py        datos, ganancia, corte, caché de modelos, escritura de envíos
+│   ├── registro.py           el ledger en Postgres (base `competencia`, contenedor zulip-postgres)
+│   ├── fe_panel.py           panel base + generadores de SQL (lags, deltas, ranks, ventanas)
+│   └── v_estilo.py           estilo de los gráficos (paleta validada)
+├── scripts/                  lo que se corre a mano
+│   ├── cNNN_*.py             un experimento por script, numerados (c100–c280)
+│   ├── enviar.py             ledger -> bot -> respuesta -> ledger, un submit por comando
+│   └── ledger_export.py      Postgres -> ledger/*.csv
+├── notebooks/                n01_eda (el dataset), n02_experimentos (lo que se probó, del ledger)
 ├── experimentos/<cNNN>/      modelos (.txt), scores (.parquet), envios/*.csv   <- solo los CSV y
 │                             json/md se versionan; modelos y scores pesan 4 GB y se regeneran
 ├── ledger/                   export CSV de las tablas del ledger (experimento, submit, archivo,
 │                             resultado), para que la trazabilidad viaje con el repo
-├── docs/                     diario, auditorías, diagnóstico de FE, propuestas de features
+├── docs/                     diario, pistas del profesor, backlog, diagnóstico de FE
 └── data -> ../dmeyf2026/monday/data   symlink; los parquet no se versionan
 ```
 
@@ -39,7 +43,7 @@ los apuntes por notebook, en el vault de Obsidian `DMEyF/`.
 1. **Un submit mide una hipótesis con fundamento**, escrita antes en el ledger con su delta contra una
    referencia. Nunca al azar, nunca para "dejar vigente" el mejor puntaje: eso se hace solo cuando la
    usuaria lo indique, cerca del cierre. El cupo diario se gasta entero midiendo: **17** desde el 8-oct (el bot pasó de x/13 a x/17 sin anuncio); si rechaza el 14º, volver a 13. Renueva 21:00 ART.
-2. **Nada se envía sin pasar por `enviar.py`**, que registra primero (`estado='preparado'`) y envía
+2. **Nada se envía sin pasar por `scripts/enviar.py`**, que registra primero (`estado='preparado'`) y envía
    después. Sin `--enviar` solo registra e imprime el resumen para aprobar.
 3. **Todo lo que cuesta cómputo se persiste**: modelos por semilla en `experimentos/<exp>/modelo_*.txt`,
    scores de 202108 por semilla en `scores_202108_s<semilla>.parquet`. Re-cortar es gratis.
@@ -55,7 +59,7 @@ los apuntes por notebook, en el vault de Obsidian `DMEyF/`.
 
 ## Entorno
 
-pyenv `facultad` (Python 3.14) para todo lo de modelos; pyenv `zulip` para `enviar.py` (tiene el
+pyenv `facultad` (Python 3.14) para todo lo de modelos; pyenv `zulip` para `scripts/enviar.py` (tiene el
 módulo `zulip` además de `psycopg`). Después de un reboot: `open -a Docker && docker start zulip-postgres`.
 
 Las pistas del profesor, con ids de Zulip, están en `docs/pistas_profesor.md`.

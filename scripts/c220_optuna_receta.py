@@ -24,7 +24,7 @@ import optuna
 
 RAIZ = Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
-sys.path.insert(0, str(RAIZ.parent))
+sys.path.insert(0, str(RAIZ.parent / "src"))
 import competencia as c  # noqa: E402
 from c201_receta_lags import DATASET, semillas_c107  # noqa: E402
 

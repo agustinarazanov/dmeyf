@@ -12,7 +12,7 @@ import argparse, sys, time
 from pathlib import Path
 import numpy as np, pandas as pd
 RAIZ = Path(__file__).resolve().parent
-sys.path.insert(0, str(RAIZ)); sys.path.insert(0, str(RAIZ.parent))
+sys.path.insert(0, str(RAIZ)); sys.path.insert(0, str(RAIZ.parent / "src"))
 import competencia as c
 from c201_receta_lags import DATASET, NBR, params_receta, semillas_c107
 NOMBRE = "c216_captura_foldB"; CARPETA = c.EXPERIMENTOS / NOMBRE

@@ -15,7 +15,7 @@ import time
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(RAIZ))
+sys.path.insert(0, str(RAIZ / "src"))
 import fe_panel as fe  # noqa: E402
 import competencia as c  # noqa: E402
 

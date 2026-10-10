@@ -94,9 +94,9 @@ La curva del modelo vigente, 5 archivos por punto:
 
 ## 5. Trazabilidad
 
-Cada experimento, submit, archivo y respuesta del bot está en el ledger de Postgres (`registro.py`) y
+Cada experimento, submit, archivo y respuesta del bot está en el ledger de Postgres (`src/registro.py`) y
 exportado a `ledger/*.csv`. Un submit se registra con hipótesis y delta **antes** de enviarse
-(`enviar.py`), y la respuesta cruda del bot se guarda al volver. `ledger/v_submits.csv` es el
+(`scripts/enviar.py`), y la respuesta cruda del bot se guarda al volver. `ledger/v_submits.csv` es el
 leaderboard propio completo.
 
 ## 6. Fuentes

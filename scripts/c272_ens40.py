@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 
 RAIZ = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(RAIZ))
+sys.path.insert(0, str(RAIZ / "src"))
 import competencia as c  # noqa: E402
 
 CORTE = 14_000

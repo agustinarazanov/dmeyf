@@ -14,7 +14,7 @@ Salida: data/competencia_01_aguinaldo.parquet
 import argparse, sys, time
 from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(RAIZ))
+sys.path.insert(0, str(RAIZ / "src"))
 import fe_panel as fe
 import competencia as c
 ORIGEN = c.DATOS / "competencia_01_lags12.parquet"

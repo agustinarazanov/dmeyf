@@ -37,7 +37,7 @@ import numpy as np
 import pandas as pd
 
 RAIZ = Path(__file__).resolve().parent
-sys.path.insert(0, str(RAIZ))
+sys.path.insert(0, str(RAIZ / "src"))
 import fe_panel as fe  # noqa: E402
 from competencia import verificar_seleccion  # noqa: E402
 
@@ -49,7 +49,7 @@ SHA_POR_RONDAS = {
     (2000,): "657d747addc61efad64145ec9cef550c29c50c5ce283745f176d243270bb9d2e",       # c241_rondas2000_ens20_14000
     (1000, 2000): "7ace9c160cbc47ab047af41da18ee1774c2d3c71626cc3ba599c140d37e1643d",  # c272_ens40_14000
 }
-SHA_FINAL = None   # se fija al decidir la entrega
+SHA_FINAL = "657d747addc61efad64145ec9cef550c29c50c5ce283745f176d243270bb9d2e"   # c241_rondas2000_ens20_14000: 20 semillas x 2.000 rondas, corte 14.000 (decidido 10-oct)
 
 # ---------------------------------------------------------------- la receta
 MESES_TRAIN = [202103, 202104, 202105, 202106]
