@@ -95,9 +95,12 @@ la prevalencia de agosto, con el minimax del regret en 13.500 (`notebooks/n02_ex
 | columnas nuevas | 11 proporciones (815 col) · sumas, conteos y rachas (848 col) | 104,62 · 103,27 | dentro de la franja aunque se llevan 20–29% del gain |
 | menos columnas | sin las 52 nunca usadas (698) · solo las 392 del 99% del gain | 102,71 · 102,05 | pierden en las dos intensidades |
 | segundo modelo | horizonte 1 (BAJA+1, hasta julio) mezclado por rango, pesos 0,15 / 0,3 / 0,5 / 0,7 / 1 | 105,70 / 105,75 / 105,67 / 103,65 / 99,92 | plano hasta 0,5, se hunde después |
+| sacar las importantes | sin la familia `ctrx_quarter` (745) · sin las 10 familias top (700) · sin una de cada par con \|r\| ≥ 0,95 (708) | 102,71 · 87,21 · 104,12 | pierde · se derrumba · dentro de la franja |
 
-Pendientes del 10-oct (en cola): sin la familia `ctrx_quarter` (`c290`), sin las 10 familias más importantes
-(`c291`), sin una de cada par con |r| ≥ 0,95 (`c292`).
+Las tres últimas (`c290`, `c291`, `c292`, 10-oct) son la prueba de la clase de ensambles llevada a LightGBM: en el
+random forest sacar `ctrx_quarter` subía la ganancia; acá con muestreo de columnas la descorrelación ya está y lo
+que queda es pérdida de información. Sin las 10 familias que concentran el 45% del gain el modelo vuelve al
+nivel de la primera semana: la señal no se recupera desde las otras 140. Sacar las 42 casi duplicadas no cambia nada.
 
 ### Validación interna
 

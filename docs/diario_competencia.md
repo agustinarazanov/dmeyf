@@ -2124,3 +2124,11 @@ resto: las 10 familias (actividad, saldos, sueldo, margen, préstamos, consumo d
 sustitutos entre las otras 140. Junto con c290 (−2,8 sacando solo `ctrx_quarter`), la lectura es que la
 redundancia existe de a una variable (las otras nueve cubren parte de la actividad) pero no en bloque. Para el
 video de Michelina: el modelo se para sobre diez variables de negocio y la historia agrega encima, no al revés.
+
+### 18:15 — c292, sin las correlacionadas: no cambia nada
+**Sin una columna de cada par con |r| ≥ 0,95 (42 fuera, 708 columnas): 104,12 (sd 1,62)** contra 105,51 de las
+mismas 5 semillas: −1,4, dentro del ruido de una media de 5 archivos (sd ≈ 0,9) y arriba de la media de 20
+(103,85). Los pares eran casi todos `mconsumospesos`~`mconsumototal` de Visa y Master y lags/deltas que se
+duplican entre sí. Lectura: las casi duplicadas no estorban ni ayudan; el muestreo de columnas de la receta ya las
+absorbe. Con c290 y c291 cierra B17: ni sacar importantes ni sacar duplicadas gana, y la receta de 750 columnas
+sigue siendo la entrega. Último experimento de la cola; cupo usado 3/41 (cola del día: c290, c291, c292).

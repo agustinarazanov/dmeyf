@@ -100,7 +100,7 @@ Target BAJA+1 solo, meses 03–07 (julio tiene BAJA+1 completo y sin BAJA+2 esco
 c241 semilla a semilla, 5 archivos contra 5 con la misma suerte de semillas (el diseño que deja ver ±0,5 en
 vez de ±1,5). Review `monday-45`. Lo que queda: BAJA+1 con el mes más fresco no ve nada que `pesos` 0,25 no vea.
 
-### B17. Sacar las variables más importantes — MEDIDO 10-oct: sin `ctrx_quarter` (`c290`) 102,71 (−2,8); sin las 10 familias top (`c291`) 87,21 (−18,3). Pierde; la señal no se recupera desde el resto. Pendiente `c292` (sin correlacionadas)
+### B17. Sacar las variables más importantes / correlacionadas — MEDIDO 10-oct: sin `ctrx_quarter` (`c290`) 102,71 (−2,8); sin las 10 familias top (`c291`) 87,21 (−18,3); sin una de cada par con |r| ≥ 0,95 (`c292`, 42 fuera) 104,12 (−1,4, dentro del ruido). Cerrado: ni sacar importantes ni sacar duplicadas gana
 Idea de la clase de ensambles (exp. 1): en el RF, sacar `ctrx_quarter` subía la ganancia. En LightGBM con
 muestreo de columnas no: la información no se recupera del todo por otras variables. Pregunta de Agustina.
 
