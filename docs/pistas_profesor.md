@@ -129,3 +129,10 @@ ceros, BAJA+2 0,52% con cero vs 0,47% sin); `Visa_mpagado` en 05 y 08 pasa de ~1
   de probabilidades: pico ~12.000 en test local, igual que el sesgo chico de nuestro fold C.
 - Alejandro Bolaños arregla `list submit` del bot (sale truncado) [199714]. Nadie posteó todavía en
   `z-Entrega Final > Primera Competencia`.
+
+## 10-oct, `z-Entrega Final > Primera Competencia`: las reglas de entrega, en limpio
+Denicolay [200311, 200312, 200319, 200334]: cierre 23:59:59 ART; cuenta el último submit; **el último submit es
+un solo archivo**; el link a GitHub va en ese tópico minutos antes o después, y debe permitir replicar
+exactamente ese archivo; notebook único → solo ese archivo; ensambles → subcarpetas + README; hiperparámetros
+heredados → subir la optimización que los generó. Bolaños [200869]: sin los CSV de la competencia en el repo;
+repo público (lo ven docentes y compañeros). Nuestro post: [200992].

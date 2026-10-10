@@ -2132,3 +2132,25 @@ mismas 5 semillas: −1,4, dentro del ruido de una media de 5 archivos (sd ≈ 0
 duplican entre sí. Lectura: las casi duplicadas no estorban ni ayudan; el muestreo de columnas de la receta ya las
 absorbe. Con c290 y c291 cierra B17: ni sacar importantes ni sacar duplicadas gana, y la receta de 750 columnas
 sigue siendo la entrega. Último experimento de la cola; cupo usado 3/41 (cola del día: c290, c291, c292).
+
+### 19:05 — entrega final reenviada y link del repo posteado
+Agustina pidió mandar el último submit ya y postear el repo. **`c241_rondas2000_ens20_14000` reenviado como
+un solo archivo** (`envios_14000/c241_rondas2000_14000_ens20.csv`, SHA `657d747a…`), message_id 200988: el bot
+devolvió **103,785, aceptado, cupo 4/41** y avisó "This is now your final submission -- your LAST pre-deadline
+submit always is". `enviar.py` registró el envío pero chocó al guardar la respuesta (`resultado` es único por
+submit); la respuesta quedó en `zulip/respuestas/200988.json` y el ledger se corrigió a mano (estado
+`respondido`, `es_final` true, nota con el reenvío). Link del repo posteado en `z-Entrega Final > Primera
+Competencia` (mensaje 200992) con el mismo formato que el del video: "Buenas tardes! Dejo mi repo: …" y una
+línea sobre `reproducir.py`.
+
+**Reglas nuevas en ese tópico, hoy.** Denicolay (15:44–15:51): (1) a las 23:59:59 ART el bot deja de aceptar;
+(2) el submit que cuenta es el último; (3) **el último debe tener un solo archivo**; (4) minutos antes o después,
+el link a GitHub en el mismo tópico, con lo necesario para replicar *el único archivo exacto* entregado; (5) si
+es un notebook solo, solo ese archivo; (6) ensambles: subcarpetas + README con instrucciones; (7) si se usaron
+hiperparámetros de una corrida anterior, subir también la optimización que los produjo. Alejandro Bolaños
+(21:25): **no subir los CSV de la competencia** (el dataset; nuestros CSV son envíos, el dataset está en un
+symlink fuera del repo) y **el repo tiene que ser público** (verificado por la API de GitHub: `private: false`).
+Siete compañeros ya postearon hoy entre las 17:32 y las 21:00, lo que sugiere que para varios el cierre es esta
+noche; el `help` del bot decía `Deadline: 2026-10-11T03:01:01`, que en UTC es hoy sábado 00:01 del domingo ART.
+La Cartelera decía domingo 23:59:59. Con el reenvío de hoy la entrega está cubierta en los dos casos; si el bot
+sigue abierto el domingo, se reenvía el mismo archivo a la tarde y se vuelve a postear nada (el link ya está).
