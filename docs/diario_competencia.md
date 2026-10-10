@@ -2067,3 +2067,45 @@ de punta a punta esta noche con la entrega decidida (20 semillas × 2.000 rondas
   del sábado). **Pendiente con Agustina:** elegir la entrega (la evidencia de hoy apunta a 20 × 2.000 rondas a
   14.000), fijar `SHA_FINAL`, actualizar el README con la tabla de arriba, y postear el link del repo en
   `z-Entrega Final`.
+
+## 10-oct (sábado) — reproducción, notebooks, ledger con fechas reales
+
+### 11:20 — la reproducción de anoche difería en 157 ids: era el `Dataset` compartido
+`reproducir.py --rondas 2000` terminó a las 23:00 con SHA distinto del ensamble registrado (`657d747a…`): 13.843
+de 14.000 ids en común, 157 distintos. Causa: construía **un solo `lgb.Dataset`** y lo reutilizaba para las 20
+semillas; LightGBM muestrea 200.000 filas **con la semilla** para armar los bins, así que el pipeline que entrenó
+la entrega (un `Dataset` nuevo por semilla, `c210`) y la reproducción entrenaban modelos distintos de la segunda
+semilla en adelante. Verificado con `c280_verificar_semilla.py`: con un `Dataset` por semilla, la semilla 269281
+reproduce las predicciones registradas **bit a bit** (max |Δp| = 0, 0 ids distintos). Corregido, relanzado a las
+11:20 con 20 semillas (~4 h).
+
+### 11:15 — plazo y requisitos de la entrega, con fuentes
+- Cartelera [191490, 191494], Denicolay 2-oct: cierra el **domingo 11 a las 23:59:59**; vale el **último** submit; hay
+  que **reenviar** el elegido para que sea el último. El bot sigue diciendo `Deadline: 2026-10-11T03:01:01` sin
+  zona: si es UTC, cierra hoy a las 00:01. Plan: la entrega sale hoy ~22:30 como último submit y se **reenvía
+  mañana a la tarde**; así queda última en las dos lecturas.
+- Link del repo: `z-Entrega Final > Primera Competencia` [191074], "notebooks y/o scripts + instrucciones para
+  replicar exactamente la predicción final". Libro §1.5.1 (p. 11): repo público hasta 5 meses después de las notas,
+  scripts que partan del dataset original y repliquen la entrega con las semillas; la cátedra verifica que el CSV
+  salió de ese script. Nadie posteó todavía (11:06).
+- Zulip desde ayer al mediodía: nada que mueva el modelo (ver `pistas_profesor.md`, barrido del 10-oct). Lo único no
+  medido en su forma exacta: rank con signo entre −1 y 1 (Emmanuel). Karina subió una imagen a `Private vs
+  Public` que devuelve 403 a esta cuenta.
+
+### 12:30 — notebooks y ledger
+- `notebooks/n01_eda.ipynb` (8 figuras: flujo de cartera, bloques de nulos, drift indexado, artefactos de calendario,
+  actividad y rojo por clase, trayectoria antes de la baja, AUC univariado, autocorrelación) y
+  `notebooks/n02_experimentos.ipynb` (público submit a submit, curvas de corte con 20 archivos, forest plot de 21
+  variantes contra la franja, columnas vs ganancia, maldición del ganador, curva de peso del horizonte 1,
+  importancia, borde de las 20 listas, **validación interna**: captura y regret del fold B, control del fold A,
+  local vs público; cupo por día). Sin PNG en el repo; `v_estilo.py` copiado para que sea autocontenido.
+- **El ledger tenía mal `enviado_en`** para los 18 submits reconciliados desde Zulip (fecha de la reconciliación)
+  y para los 7 de c107/c113 (nulo), y para el resto tenía la hora del registro, no la del envío. Se reemplazó en
+  los 99 submits por la hora del mensaje al bot en Zulip. Con eso el cupo se usó entero todos los días: 13/13 del
+  4 al 7, 17/17 el 8, 30/31 el 9 (Agustina lo recordaba bien; el gráfico anterior lo mostraba mal). Lección: al
+  cargar el `.env` del archivo de Zulip en la misma shell, `registro` se conecta a esa base y no a la del ledger.
+- En cola detrás de la reproducción, 5 semillas y 2.000 rondas cada una, contra las 5 de c241: **c290** sin la
+  familia `ctrx_quarter` (745 columnas, 9,6% del gain), **c291** sin las 10 familias más importantes (700 columnas,
+  45% del gain), **c292** sin una de cada par con |r| ≥ 0,95 (42 fuera, 708 columnas; 40 pares, casi todos
+  `mconsumospesos`~`mconsumototal` de Visa y Master y lags/deltas duplicados). Idea de clase (Ensambles, exp. 1:
+  sacar `ctrx_quarter` del RF subió la ganancia de 239,8 a 250,3 M) y pregunta de Agustina sobre colinealidad.
