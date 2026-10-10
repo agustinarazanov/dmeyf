@@ -153,9 +153,12 @@ def main() -> None:
     P = params(len(X))
     rangos = []
     for nbr in args.rondas:
-        ds = lgb.Dataset(X, label=y, weight=w, free_raw_data=False)
         for i, s in enumerate(semillas()[:args.semillas], 1):
-            m = lgb.train({**P, "seed": s}, ds, num_boost_round=nbr)
+            # Un Dataset NUEVO por semilla, igual que el pipeline que entreno la entrega: los bins se
+            # construyen sobre una muestra de 200.000 filas sorteada con la semilla, asi que compartir
+            # el Dataset entre semillas entrena 19 modelos distintos de los registrados (10-oct: 157 ids
+            # de diferencia en el ensamble).
+            m = lgb.train({**P, "seed": s}, lgb.Dataset(X, label=y, weight=w), num_boost_round=nbr)
             rangos.append(pd.Series(m.predict(Xfut)).rank(pct=True).to_numpy())
             print(f"    {nbr} rondas, semilla {s} ({i}/{args.semillas}) [{time.time()-t0:.0f}s]", flush=True)
     ens = np.mean(rangos, axis=0)            # ensamble por RANGO, no por score, de todos los modelos

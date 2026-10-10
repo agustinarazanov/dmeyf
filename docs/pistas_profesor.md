@@ -109,3 +109,23 @@ ceros, BAJA+2 0,52% con cero vs 0,47% sin); `Visa_mpagado` en 05 y 08 pasa de ~1
   10 23:59 ART). Una tutora el jueves 8: "a 3 días del cierre" (→ domingo). **Sin zanjar; la entrega
   va adentro el sábado.**
 - Cupo del bot: 13/día hasta el 8-oct 16:11; desde entonces reporta `x/17`, sin anuncio en Zulip.
+
+## Barrido del 10-oct a la mañana (mensajes desde el 9-oct 12:00): nada que mueva el modelo
+
+- **Silvana Contreras, `general > Private vs Public` [198194, 198197]:** "ayer se recomendó intensamente que no saquen
+  la conclusión de que les está yendo bien por la medida del leaderboard público"; la recomendación para los días
+  que quedan es construir el baseline de `J-Clase 08 > En Limpio` (lo que ya es nuestra entrega) y optimizar
+  **sin undersampling**. Propone comparar modelos "semilleados" con **Wilcoxon sobre vectores de ganancia** [198178]
+  (es lo que hacemos con 20 archivos contra 20, mismas semillas).
+- **Karina Formoso [198148]** (tabla): dos modelos con 50 semillas, corte 13.000: público 105,49 / 106,54 promediados,
+  106,25 / 104,33 como 10 archivos de 5 semillas. Mismo orden de magnitud que el nuestro; su meseta local en junio
+  va de 11.400 a 14.600 y la tutora le objeta que una meseta de 3.000 envíos "es un mesetón".
+- **Florencia Rodriguez [198165]:** sus modelos > 100 son exactamente la receta (03–06, ambas bajas positivas,
+  `ccajas_depositos` NA en mayo, lags 1 y 2 + deltas, 762 variables, préstamos adentro).
+- **Emmanuel Valdez [198166, 198182]:** sugiere **rankear las variables entre −1 y 1** (rank con signo: positivos en
+  (0, 1], negativos en [−1, 0), 0 → 0) e imputar nulos con el mes anterior o el promedio. Sin medición publicada.
+  Nuestra medición previa de rank por mes (`c150_pormes`, dataset viejo) perdió −2; sobre lags12 no se midió.
+- **German Reintgen [199199]:** curva de ganancia en junio (train marzo–abril), 20 semillas + ensamble por promedio
+  de probabilidades: pico ~12.000 en test local, igual que el sesgo chico de nuestro fold C.
+- Alejandro Bolaños arregla `list submit` del bot (sale truncado) [199714]. Nadie posteó todavía en
+  `z-Entrega Final > Primera Competencia`.
